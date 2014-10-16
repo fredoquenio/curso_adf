@@ -11,78 +11,78 @@
     <Attr Name="_deployType" Value="0"/>
   </DesignTime>
   <ViewUsage
-    Name="CompeticionView1"
+    Name="CompeticionVO"
     ViewObjectName="com.atsistemas.model.view.CompeticionVO"/>
   <ViewUsage
-    Name="EquipoView1"
+    Name="EquipoVO"
     ViewObjectName="com.atsistemas.model.view.EquipoVO"/>
   <ViewUsage
-    Name="EstadioView1"
+    Name="EstadioVO"
     ViewObjectName="com.atsistemas.model.view.EstadioVO"/>
   <ViewUsage
-    Name="JugadorView1"
+    Name="JugadorVO"
     ViewObjectName="com.atsistemas.model.view.JugadorVO"/>
   <ViewUsage
-    Name="PartidoView1"
+    Name="PartidoVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="CountriesView1"
+    Name="CountriesVO"
     ViewObjectName="com.atsistemas.model.view.CountriesVO"/>
   <ViewUsage
-    Name="RegionsView1"
+    Name="RegionsVO"
     ViewObjectName="com.atsistemas.model.view.RegionsVO"/>
   <ViewUsage
-    Name="JugadorView2"
+    Name="JugadorEquipoVO"
     ViewObjectName="com.atsistemas.model.view.JugadorVO"/>
   <ViewUsage
-    Name="PartidoView2"
+    Name="PartidoCompeticionVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="PartidoView3"
+    Name="PartidoEstadioVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="PartidoView4"
+    Name="PartidoEquipoLocalVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="PartidoView5"
+    Name="PartidoEquipoVisitanteVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="CountriesView2"
+    Name="CountriesRegionVO"
     ViewObjectName="com.atsistemas.model.view.CountriesVO"/>
   <ViewLinkUsage
     Name="JugadorEquipoFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.JugadorEquipoFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.JugadorView2"
+    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.JugadorEquipoVO"
     Reversed="false"/>
   <ViewLinkUsage
     Name="PartidoCompeticionFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.PartidoCompeticionFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.CompeticionView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.PartidoView2"
+    SrcViewUsageName="com.atsistemas.model.AppModule.CompeticionVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.PartidoCompeticionVO"
     Reversed="false"/>
   <ViewLinkUsage
     Name="PartidoEstadioFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.PartidoEstadioFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.EstadioView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.PartidoView3"
+    SrcViewUsageName="com.atsistemas.model.AppModule.EstadioVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.PartidoEstadioVO"
     Reversed="false"/>
   <ViewLinkUsage
     Name="PartidoLocalFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.PartidoLocalFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.PartidoView4"
+    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.PartidoEquipoLocalVO"
     Reversed="false"/>
   <ViewLinkUsage
     Name="PartidoVisitanteFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.PartidoVisitanteFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.PartidoView5"
+    SrcViewUsageName="com.atsistemas.model.AppModule.EquipoVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.PartidoEquipoVisitanteVO"
     Reversed="false"/>
   <ViewLinkUsage
     Name="CountrRegFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.CountrRegFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.RegionsView1"
-    DstViewUsageName="com.atsistemas.model.AppModule.CountriesView2"
+    SrcViewUsageName="com.atsistemas.model.AppModule.RegionsVO"
+    DstViewUsageName="com.atsistemas.model.AppModule.CountriesRegionVO"
     Reversed="false"/>
 </AppModule>
