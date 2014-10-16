@@ -14,13 +14,18 @@
               <af:commandButton text="Competición" id="cb1"
                                 partialSubmit="true">
                     <af:setPropertyListener from="competicion"
-                                        to="#{backingBeanScope.DynamicRegionBean.currentTF}"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
               </af:commandButton>
               <af:commandButton text="Partidos" id="cb2" 
                                 partialSubmit="true">
                 <af:setPropertyListener from="partidos"
-                                        to="#{backingBeanScope.DynamicRegionBean.currentTF}"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+              </af:commandButton>
+              <af:commandButton text="Estadios" id="cb3" partialSubmit="true">
+                     <af:setPropertyListener from="estadios"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
               </af:commandButton>
             </af:panelGroupLayout>

@@ -2,7 +2,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="AFStretchWidth">
-    <af:panelHeader text="Gestión de Partidos" id="ph1">
+    <af:panelHeader text="PartidoEO" id="ph1">
       <af:query id="qryId1" headerText="Search" disclosed="true"
                 value="#{bindings.PartidoVOCriteriaQuery.queryDescriptor}"
                 model="#{bindings.PartidoVOCriteriaQuery.queryModel}"
@@ -21,7 +21,7 @@
                  sortable="true"
                  headerText="#{bindings.PartidoVO.hints.Id.label}"
                  id="resId1c1">
-        <af:outputText value="#{row.Id}" id="ot5">
+        <af:outputText value="#{row.Id}" id="ot2">
           <af:convertNumber groupingUsed="false"
                             pattern="#{bindings.PartidoVO.hints.Id.format}"/>
         </af:outputText>
@@ -44,7 +44,7 @@
                  sortable="true"
                  headerText="#{bindings.PartidoVO.hints.NombreEquipoLocal.label}"
                  id="resId1c4">
-        <af:outputText value="#{row.NombreEquipoLocal}" id="ot2"/>
+        <af:outputText value="#{row.NombreEquipoLocal}" id="ot5"/>
       </af:column>
       <af:column sortProperty="#{bindings.PartidoVO.hints.NombreEquipoVisitante.name}"
                  sortable="true"

@@ -11,12 +11,16 @@
     <page path="/index.jspx" usageId="com_atsistemas_view_indexPageDef"/>
     <page path="/WEB-INF/fragments/partidos.jsff"
           usageId="com_atsistemas_view_partidosPageDef"/>
+    <page path="/WEB-INF/fragments/estadios.jsff"
+          usageId="com_atsistemas_view_estadiosPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_atsistemas_view_indexPageDef"
           path="com.atsistemas.view.pageDefs.indexPageDef"/>
     <page id="com_atsistemas_view_partidosPageDef"
           path="fragments.partidosPageDef"/>
+    <page id="com_atsistemas_view_estadiosPageDef"
+          path="fragments.estadiosPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="com.atsistemas.model"

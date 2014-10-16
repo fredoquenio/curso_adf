@@ -48,6 +48,40 @@
     EntityAttrName="Region"
     EntityUsage="Estadio"
     AliasName="REGION"/>
+  <ViewCriteria
+    Name="EstadioVOCriteria"
+    ViewObjectName="com.atsistemas.model.view.EstadioVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow39"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Nombre"
+        ViewAttribute="Nombre"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="PartidoView"
     ViewLink="com.atsistemas.model.view.link.PartidoEstadioFkLink"

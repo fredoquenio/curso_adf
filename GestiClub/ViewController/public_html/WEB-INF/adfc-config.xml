@@ -8,6 +8,6 @@
   <managed-bean id="__16">
     <managed-bean-name id="__13">DynamicRegionBean</managed-bean-name>
     <managed-bean-class id="__15">com.atsistemas.beans.DynamicRegionBean</managed-bean-class>
-    <managed-bean-scope id="__14">backingBean</managed-bean-scope>
+    <managed-bean-scope id="__14">pageFlow</managed-bean-scope>
   </managed-bean>
 </adfc-config>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="estadiosPageDef" Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EstadioVO" RangeSize="25"
+              DataControl="AppModuleDataControl" id="EstadioVOIterator"/>
+    <searchRegion Criteria="EstadioVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EstadioVOIterator" id="EstadioVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EstadioVOIterator" id="EstadioVO">
+      <nodeDefinition DefName="com.atsistemas.model.view.EstadioVO"
+                      Name="EstadioVO0">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Capacidad"/>
+          <Item Value="Region"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
