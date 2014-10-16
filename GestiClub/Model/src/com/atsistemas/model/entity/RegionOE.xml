@@ -47,7 +47,7 @@
       <Attr Name="_DBObjectName" Value="REG_ID_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.RegionOE.RegionId"/>
+      <Item Value="com.atsistemas.model.entity.RegionOE.RegionId"/>
     </AttrArray>
   </Key>
   <Key
@@ -58,7 +58,7 @@
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.RegionOE.RegionId"/>
+      <Item Value="com.atsistemas.model.entity.RegionOE.RegionId"/>
     </AttrArray>
   </Key>
 </Entity>
