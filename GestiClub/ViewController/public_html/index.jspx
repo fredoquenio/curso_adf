@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"          
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document title="main" id="d1">
+      <af:form id="f1">
+        <af:panelSplitter orientation="horizontal" splitterPosition="100"
+                          id="ps1">
+          <f:facet name="first">
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+              <af:commandButton text="Inicio" id="cb4" partialSubmit="true"/>                                 
+              <af:commandButton text="Competición" id="cb1"
+                                partialSubmit="true">
+                    <af:setPropertyListener from="competicion"
+                                        to="#{backingBeanScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+              </af:commandButton>
+              <af:commandButton text="Partidos" id="cb2" 
+                                partialSubmit="true">
+                <af:setPropertyListener from="partidos"
+                                        to="#{backingBeanScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+              </af:commandButton>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="second">
+            <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                       partialTriggers="::cb1 ::cb2 ::cb4"/>
+            <!-- id="af_twocol_left_sidebar_split_stretched"   -->
+          </f:facet>
+        </af:panelSplitter>
+      </af:form>      
+    </af:document>
+  </f:view>
+</jsp:root>
