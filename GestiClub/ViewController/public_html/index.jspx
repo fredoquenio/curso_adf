@@ -26,8 +26,11 @@
             </af:panelGroupLayout>
           </f:facet>
           <f:facet name="second">
-            <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
-                       partialTriggers="::cb1 ::cb2 ::cb4"/>
+            <af:panelGroupLayout id="pgl2">
+              <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                         partialTriggers="::cb1 ::cb2 ::cb4"
+                         styleClass="AFStretchWidth"/>
+            </af:panelGroupLayout>
             <!-- id="af_twocol_left_sidebar_split_stretched"   -->
           </f:facet>
         </af:panelSplitter>
