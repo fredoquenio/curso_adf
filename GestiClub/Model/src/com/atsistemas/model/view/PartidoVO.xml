@@ -11,8 +11,17 @@
        Partido.VISITANTE, 
        Partido.ESTADIO, 
        Partido.FECHA, 
-       Partido.COMPETICION"
-  FromList="PARTIDO Partido"
+       Partido.COMPETICION, 
+       EstadioPartido.NOMBRE, 
+       EstadioPartido.ID AS ID1, 
+       EquipoLocal.NOMBRE AS NOMBRE1, 
+       EquipoLocal.ID AS ID2, 
+       CompeticionPartido.ID AS ID3, 
+       EquipoVisitante.NOMBRE AS NOMBRE3, 
+       EquipoVisitante.ID AS ID4, 
+       CompeticionPartido.NOMBRE AS NOMBRE2"
+  FromList="PARTIDO Partido, ESTADIO EstadioPartido, EQUIPO EquipoLocal, COMPETICION CompeticionPartido, EQUIPO EquipoVisitante"
+  Where="(((Partido.ESTADIO = EstadioPartido.ID) AND (Partido.LOCAL = EquipoLocal.ID)) AND (Partido.COMPETICION = CompeticionPartido.ID)) AND (Partido.VISITANTE = EquipoVisitante.ID)"
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
@@ -23,6 +32,82 @@
   <EntityUsage
     Name="Partido"
     Entity="com.atsistemas.model.entity.PartidoEO"/>
+  <EntityUsage
+    Name="EstadioPartido"
+    Entity="com.atsistemas.model.entity.EstadioEO"
+    Association="com.atsistemas.model.entity.assoc.PartidoEstadioFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.PartidoEstadioFkAssoc.Estadio1"
+    SourceUsage="com.atsistemas.model.view.PartidoVO.Partido"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.PartidoEO.Estadio"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.EstadioEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="EquipoLocal"
+    Entity="com.atsistemas.model.entity.EquipoEO"
+    Association="com.atsistemas.model.entity.assoc.PartidoLocalFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.PartidoLocalFkAssoc.Equipo"
+    SourceUsage="com.atsistemas.model.view.PartidoVO.Partido"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.PartidoEO.Local"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.EquipoEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="CompeticionPartido"
+    Entity="com.atsistemas.model.entity.CompeticionEO"
+    Association="com.atsistemas.model.entity.assoc.PartidoCompeticionFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.PartidoCompeticionFkAssoc.Competicion1"
+    SourceUsage="com.atsistemas.model.view.PartidoVO.Partido"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.PartidoEO.Competicion"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.CompeticionEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="EquipoVisitante"
+    Entity="com.atsistemas.model.entity.EquipoEO"
+    Association="com.atsistemas.model.entity.assoc.PartidoVisitanteFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.PartidoVisitanteFkAssoc.Equipo1"
+    SourceUsage="com.atsistemas.model.view.PartidoVO.Partido"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.PartidoEO.Visitante"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.EquipoEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
   <ViewAttribute
     Name="Id"
     IsNotNull="true"
@@ -65,4 +150,121 @@
     EntityAttrName="Competicion"
     EntityUsage="Partido"
     AliasName="COMPETICION"/>
+  <ViewAttribute
+    Name="NombreEstadio"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Nombre"
+    EntityUsage="EstadioPartido"
+    AliasName="NOMBRE"/>
+  <ViewAttribute
+    Name="IdEstadio"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="EstadioPartido"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="NombreEquipoLocal"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Nombre"
+    EntityUsage="EquipoLocal"
+    AliasName="NOMBRE1"/>
+  <ViewAttribute
+    Name="IdEquipoLocal"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="EquipoLocal"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="IdCompeticion"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="CompeticionPartido"
+    AliasName="ID3"/>
+  <ViewAttribute
+    Name="NombreEquipoVisitante"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Nombre"
+    EntityUsage="EquipoVisitante"
+    AliasName="NOMBRE3"/>
+  <ViewAttribute
+    Name="IdEquipoVisitante"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="EquipoVisitante"
+    AliasName="ID4"/>
+  <ViewAttribute
+    Name="NombreCompeticion"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Nombre"
+    EntityUsage="CompeticionPartido"
+    AliasName="NOMBRE2"/>
+  <ViewCriteria
+    Name="PartidoVOCriteria"
+    ViewObjectName="com.atsistemas.model.view.PartidoVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow10"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Fecha"
+        ViewAttribute="Fecha"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="NombreEstadio"
+        ViewAttribute="NombreEstadio"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="NombreEquipoLocal"
+        ViewAttribute="NombreEquipoLocal"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="NombreEquipoVisitante"
+        ViewAttribute="NombreEquipoVisitante"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="NombreCompeticion"
+        ViewAttribute="NombreCompeticion"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
 </ViewObject>

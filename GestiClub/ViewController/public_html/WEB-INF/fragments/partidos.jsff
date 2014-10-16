@@ -1,10 +1,102 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-  <p>
-    Partidos
-  </p>
-  <p>
-     
-  </p>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelGroupLayout layout="vertical" id="pgl2">
+      <af:panelHeader text="PartidoEO" id="ph1">
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.PartidoVOCriteriaQuery.queryDescriptor}"
+                  model="#{bindings.PartidoVOCriteriaQuery.queryModel}"
+                  queryListener="#{bindings.PartidoVOCriteriaQuery.processQuery}"
+                  queryOperationListener="#{bindings.PartidoVOCriteriaQuery.processQueryOperation}"
+                  resultComponentId="::resId1"/>
+      </af:panelHeader>
+      <af:table value="#{bindings.PartidoVO.collectionModel}" var="row"
+                rows="#{bindings.PartidoVO.rangeSize}"
+                emptyText="#{bindings.PartidoVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.PartidoVO.rangeSize}"
+                rowBandingInterval="0"
+                selectedRowKeys="#{bindings.PartidoVO.collectionModel.selectedRow}"
+                selectionListener="#{bindings.PartidoVO.collectionModel.makeCurrent}"
+                rowSelection="single" id="resId1">
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Id.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Id.label}"
+                   id="resId1c1">
+          <af:outputText value="#{row.Id}" id="ot7">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.PartidoVO.hints.Id.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Local.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Local.label}"
+                   id="resId1c2">
+          <af:outputText value="#{row.Local}" id="ot6">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.PartidoVO.hints.Local.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Visitante.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Visitante.label}"
+                   id="resId1c3">
+          <af:outputText value="#{row.Visitante}" id="ot3">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.PartidoVO.hints.Visitante.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Estadio.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Estadio.label}"
+                   id="resId1c4">
+          <af:outputText value="#{row.Estadio}" id="ot2">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.PartidoVO.hints.Estadio.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Fecha.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Fecha.label}"
+                   id="resId1c5">
+          <af:outputText value="#{row.Fecha}" id="ot9">
+            <af:convertDateTime pattern="#{bindings.PartidoVO.hints.Fecha.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.Competicion.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.Competicion.label}"
+                   id="resId1c6">
+          <af:outputText value="#{row.Competicion}" id="ot1">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.PartidoVO.hints.Competicion.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.NombreEstadio.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.NombreEstadio.label}"
+                   id="resId1c7">
+          <af:outputText value="#{row.NombreEstadio}" id="ot8"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.NombreEquipoLocal.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.NombreEquipoLocal.label}"
+                   id="resId1c8">
+          <af:outputText value="#{row.NombreEquipoLocal}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.NombreCompeticion.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.NombreCompeticion.label}"
+                   id="resId1c9">
+          <af:outputText value="#{row.NombreCompeticion}" id="ot4"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.PartidoVO.hints.NombreEquipoVisitante.name}"
+                   sortable="true"
+                   headerText="#{bindings.PartidoVO.hints.NombreEquipoVisitante.label}"
+                   id="resId1c10">
+          <af:outputText value="#{row.NombreEquipoVisitante}" id="ot10"/>
+        </af:column>
+      </af:table>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
 </jsp:root>

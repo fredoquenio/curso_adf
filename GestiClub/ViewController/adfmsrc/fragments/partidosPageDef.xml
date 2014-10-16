@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="partidosPageDef" Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PartidoVO" RangeSize="25"
+              DataControl="AppModuleDataControl" id="PartidoVOIterator"/>
+    <searchRegion Criteria="PartidoVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PartidoVOIterator" id="PartidoVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PartidoVOIterator" id="PartidoVO">
+      <nodeDefinition DefName="com.atsistemas.model.view.PartidoVO"
+                      Name="PartidoVO0">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Local"/>
+          <Item Value="Visitante"/>
+          <Item Value="Estadio"/>
+          <Item Value="Fecha"/>
+          <Item Value="Competicion"/>
+          <Item Value="NombreEstadio"/>
+          <Item Value="NombreEquipoLocal"/>
+          <Item Value="NombreCompeticion"/>
+          <Item Value="NombreEquipoVisitante"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

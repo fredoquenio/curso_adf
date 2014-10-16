@@ -31,13 +31,14 @@
   <Attribute
     Name="Nombre"
     IsNotNull="true"
+    Precision="100"
     ColumnName="NOMBRE"
-    SQLType="NUMERIC"
+    SQLType="VARCHAR"
     Type="java.lang.String"
-    ColumnType="CHAR"
+    ColumnType="VARCHAR2"
     TableName="COMPETICION">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -130,9 +131,7 @@
       <Attr Name="_checkCondition" Value='"NOMBRE" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.CompeticionEO.Nombre"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="SysC004058">

@@ -9,9 +9,22 @@
   </definitionFactories>
   <pageMap>
     <page path="/index.jspx" usageId="com_atsistemas_view_indexPageDef"/>
+    <page path="/WEB-INF/fragments/partidos.jsff"
+          usageId="com_atsistemas_view_partidosPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_atsistemas_view_indexPageDef"
           path="com.atsistemas.view.pageDefs.indexPageDef"/>
+    <page id="com_atsistemas_view_partidosPageDef"
+          path="fragments.partidosPageDef"/>
   </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="com.atsistemas.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
 </Application>
