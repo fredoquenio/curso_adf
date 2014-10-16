@@ -238,30 +238,6 @@
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
-      <ViewCriteriaItem
-        Name="NombreEstadio"
-        ViewAttribute="NombreEstadio"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="NombreEquipoLocal"
-        ViewAttribute="NombreEquipoLocal"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="NombreEquipoVisitante"
-        ViewAttribute="NombreEquipoVisitante"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="NombreCompeticion"
-        ViewAttribute="NombreCompeticion"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
   <AttrArray Name="KeyAttributes">

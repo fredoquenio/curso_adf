@@ -16,6 +16,20 @@
     <AttrArray Name="_publishEvents"/>
   </DesignTime>
   <Attribute
+    Name="Id"
+    IsNotNull="true"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="JUGADOR"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("JUGADOR_SEQUENCE", object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
     Name="Nombre"
     IsNotNull="true"
     Precision="50"
@@ -39,19 +53,6 @@
     TableName="JUGADOR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="Id"
-    IsNotNull="true"
-    ColumnName="ID"
-    SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    TableName="JUGADOR"
-    PrimaryKey="true">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
     </DesignTime>
   </Attribute>
   <Attribute

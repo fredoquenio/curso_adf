@@ -3,7 +3,7 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:panelGroupLayout layout="vertical" id="pgl2">
-      <af:panelHeader text="PartidoEO" id="ph1">
+      <af:panelHeader text="Partidos" id="ph1">
         <af:query id="qryId1" headerText="Search" disclosed="true"
                   value="#{bindings.PartidoVOCriteriaQuery.queryDescriptor}"
                   model="#{bindings.PartidoVOCriteriaQuery.queryModel}"
