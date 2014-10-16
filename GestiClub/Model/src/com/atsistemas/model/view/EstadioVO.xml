@@ -9,7 +9,6 @@
   SelectList="Estadio.ID, 
        Estadio.NOMBRE, 
        Estadio.CAPACIDAD, 
-       Estadio.PRESUPUESTO, 
        Estadio.REGION"
   FromList="ESTADIO Estadio"
   BindingStyle="OracleName"
@@ -43,12 +42,6 @@
     EntityAttrName="Capacidad"
     EntityUsage="Estadio"
     AliasName="CAPACIDAD"/>
-  <ViewAttribute
-    Name="Presupuesto"
-    PrecisionRule="true"
-    EntityAttrName="Presupuesto"
-    EntityUsage="Estadio"
-    AliasName="PRESUPUESTO"/>
   <ViewAttribute
     Name="Region"
     PrecisionRule="true"

@@ -55,17 +55,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Presupuesto"
-    ColumnName="PRESUPUESTO"
-    SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    TableName="ESTADIO">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Region"
     ColumnName="REGION"
     SQLType="NUMERIC"
