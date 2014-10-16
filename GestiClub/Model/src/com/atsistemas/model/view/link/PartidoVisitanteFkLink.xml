@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PartidoVisitanteFkLink"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  EntityAssociation="com.atsistemas.model.entity.assoc.PartidoVisitanteFkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="EquipoView"
+    Cardinality="1"
+    Owner="com.atsistemas.model.view.EquipoVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="EquipoView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.atsistemas.model.view.EquipoVO.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="PartidoView1"
+    Cardinality="-1"
+    Owner="com.atsistemas.model.view.PartidoVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PartidoView1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.atsistemas.model.view.PartidoVO.Visitante"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
