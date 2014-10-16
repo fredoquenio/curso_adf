@@ -79,7 +79,6 @@
   </Attribute>
   <Attribute
     Name="Competicion"
-    IsNotNull="true"
     ColumnName="COMPETICION"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
@@ -189,9 +188,7 @@
       <Attr Name="_checkCondition" Value='"COMPETICION" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.PartidoEO.Competicion"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="PartidoCompeticionFk">
@@ -200,9 +197,7 @@
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="PARTIDO_COMPETICION_FK"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.PartidoEO.Competicion"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="PartidoEstadioFk">

@@ -16,15 +16,11 @@
                       Name="PartidoVO0">
         <AttrNames>
           <Item Value="Id"/>
-          <Item Value="Local"/>
-          <Item Value="Visitante"/>
-          <Item Value="Estadio"/>
           <Item Value="Fecha"/>
-          <Item Value="Competicion"/>
           <Item Value="NombreEstadio"/>
           <Item Value="NombreEquipoLocal"/>
-          <Item Value="NombreCompeticion"/>
           <Item Value="NombreEquipoVisitante"/>
+          <Item Value="NombreCompeticion"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

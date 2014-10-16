@@ -43,18 +43,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Partido"
-    IsNotNull="true"
-    ColumnName="PARTIDO"
-    SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    TableName="COMPETICION">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Inicio"
     IsNotNull="true"
     ColumnName="INICIO"

@@ -8,7 +8,6 @@
   InheritPersonalization="true"
   SelectList="Competicion.ID, 
        Competicion.NOMBRE, 
-       Competicion.PARTIDO, 
        Competicion.INICIO, 
        Competicion.FIN, 
        Competicion.REGION"
@@ -37,13 +36,6 @@
     EntityAttrName="Nombre"
     EntityUsage="Competicion"
     AliasName="NOMBRE"/>
-  <ViewAttribute
-    Name="Partido"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="Partido"
-    EntityUsage="Competicion"
-    AliasName="PARTIDO"/>
   <ViewAttribute
     Name="Inicio"
     IsNotNull="true"

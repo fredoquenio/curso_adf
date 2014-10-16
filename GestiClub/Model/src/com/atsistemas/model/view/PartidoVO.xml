@@ -21,7 +21,7 @@
        EquipoVisitante.ID AS ID4, 
        CompeticionPartido.NOMBRE AS NOMBRE2"
   FromList="PARTIDO Partido, ESTADIO EstadioPartido, EQUIPO EquipoLocal, COMPETICION CompeticionPartido, EQUIPO EquipoVisitante"
-  Where="(((Partido.ESTADIO = EstadioPartido.ID) AND (Partido.LOCAL = EquipoLocal.ID)) AND (Partido.COMPETICION = CompeticionPartido.ID)) AND (Partido.VISITANTE = EquipoVisitante.ID)"
+  Where="(((Partido.ESTADIO = EstadioPartido.ID) AND (Partido.LOCAL = EquipoLocal.ID)) AND (Partido.COMPETICION = CompeticionPartido.ID(+))) AND (Partido.VISITANTE = EquipoVisitante.ID)"
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
@@ -79,7 +79,7 @@
     ReadOnly="true"
     Reference="true"
     DeleteParticipant="false"
-    JoinType="INNER JOIN">
+    JoinType="LEFT OUTER JOIN">
     <DesignTime>
       <AttrArray Name="_srcAttributes">
         <Item Value="com.atsistemas.model.entity.PartidoEO.Competicion"/>
@@ -217,7 +217,7 @@
           Value="InAdvancedMode"/>
         <Property
           Name="autoExecute"
-          Value="false"/>
+          Value="true"/>
         <Property
           Name="showInList"
           Value="true"/>
@@ -230,11 +230,11 @@
       </CustomProperties>
     </Properties>
     <ViewCriteriaRow
-      Name="vcrow10"
+      Name="vcrow37"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="Fecha"
-        ViewAttribute="Fecha"
+        Name="NombreEstadio"
+        ViewAttribute="NombreEstadio"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
