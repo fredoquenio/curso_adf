@@ -2,4 +2,5 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   Competicion
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth"/>
 </jsp:root>

@@ -33,8 +33,8 @@
     IsNotNull="true"
     ColumnName="NOMBRE"
     SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
+    Type="java.lang.String"
+    ColumnType="CHAR"
     TableName="COMPETICION">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="22"/>
