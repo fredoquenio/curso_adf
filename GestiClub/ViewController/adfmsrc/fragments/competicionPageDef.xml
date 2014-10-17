@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="competicionPageDef"
+                Package="fragments">
+  <parameters>
+    <parameter id="opcion"
+               value="#{backingBeanScope.DynamicRegionBean.currentTF}"/>
+  </parameters>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CompeticionVO" RangeSize="25"
+              DataControl="AppModuleDataControl" id="CompeticionVOIterator"/>
+    <searchRegion Criteria="CriteriaCompeticion"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CompeticionVOIterator" id="CriteriaCompeticionQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CompeticionVOIterator" id="CompeticionVO">
+      <nodeDefinition DefName="com.atsistemas.model.view.CompeticionVO"
+                      Name="CompeticionVO0">
+        <AttrNames>
+          <Item Value="Fin"/>
+          <Item Value="Id"/>
+          <Item Value="Inicio"/>
+          <Item Value="Nombre"/>
+          <Item Value="Region"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CompeticionVOIterator" id="CompeticionVO1">
+      <nodeDefinition DefName="com.atsistemas.model.view.CompeticionVO"
+                      Name="CompeticionVO10">
+        <AttrNames>
+          <Item Value="Nombre"/>
+          <Item Value="Inicio"/>
+          <Item Value="Fin"/>
+          <Item Value="Region"/>
+          <Item Value="RegionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CompeticionVOIterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CompeticionVOIterator" id="Inicio">
+      <AttrNames>
+        <Item Value="Inicio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CompeticionVOIterator" id="Fin">
+      <AttrNames>
+        <Item Value="Fin"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CompeticionVOIterator" StaticList="false"
+          Uses="LOV_Region" id="Region" DTSupportsMRU="false"/>
+    <action IterBinding="CompeticionVOIterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.CompeticionVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="CompeticionVOIterator" id="Delete"
+            InstanceName="AppModuleDataControl.CompeticionVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

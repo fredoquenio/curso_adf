@@ -2,6 +2,21 @@
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="task-flow-competicion">
     <default-activity id="__1">competicion</default-activity>
+    <managed-bean id="__4">
+      <managed-bean-name id="__3">CompeticionBean</managed-bean-name>
+      <managed-bean-class id="__2">com.atsistemas.beans.CompeticionBean</managed-bean-class>
+      <managed-bean-scope id="__5">pageFlow</managed-bean-scope>
+      <managed-property id="__21">
+        <property-name id="__22">popupConfirmDelete</property-name>
+        <property-class>com.atsistemas.beans.PopupConfirmDeleteBean</property-class>
+        <value id="__23">#{pageFlowScope.PopupConfirmDeleteBean}</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__20">
+      <managed-bean-name id="__18">PopupConfirmDeleteBean</managed-bean-name>
+      <managed-bean-class id="__17">com.atsistemas.beans.PopupConfirmDeleteBean</managed-bean-class>
+      <managed-bean-scope id="__19">pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="competicion">
       <page>/WEB-INF/fragments/competicion.jsff</page>
     </view>

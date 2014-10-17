@@ -1,6 +1,135 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
-          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-  Competicion
-  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth"/>
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="vertical">
+    <h1>GESTIÓN DE COMPETICIONES</h1>
+    
+    <!-- AF QUERY COMPETICIÓN  -->
+    <af:panelGroupLayout layout="vertical" id="pgl2">
+      <af:panelHeader text="Competición" id="ph1">
+        <af:query id="qryId1" headerText="Filtro" disclosed="true"
+                  value="#{bindings.CriteriaCompeticionQuery.queryDescriptor}"
+                  model="#{bindings.CriteriaCompeticionQuery.queryModel}"
+                  queryListener="#{bindings.CriteriaCompeticionQuery.processQuery}"
+                  queryOperationListener="#{bindings.CriteriaCompeticionQuery.processQueryOperation}"
+                  resultComponentId="::pc1:resId1"/>
+      </af:panelHeader>
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:commandToolbarButton text="Add" id="ctb1"
+                                     actionListener="#{pageFlowScope.CompeticionBean.addCompeticion}"/>
+            <af:commandToolbarButton text="Edit" id="ctb2"
+                                     actionListener="#{pageFlowScope.CompeticionBean.editCompeticion}"
+                                     disabled="#{bindings.CompeticionVO.currentRowIndex eq -1}"
+                                     partialTriggers="::qryId1 resId1"/>
+            <af:commandToolbarButton text="Delete" id="ctb3"
+                                     actionListener="#{pageFlowScope.CompeticionBean.deleteCompeticion}"
+                                     disabled="#{bindings.CompeticionVO.currentRowIndex eq -1}"
+                                     partialTriggers="::qryId1 resId1"/>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        
+        <!-- TABLA COMPETICIONES -->
+        <af:table value="#{bindings.CompeticionVO1.collectionModel}" var="row"
+                  rows="#{bindings.CompeticionVO1.rangeSize}"
+                  emptyText="#{bindings.CompeticionVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.CompeticionVO1.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.CriteriaCompeticionQuery.queryDescriptor}"
+                  queryListener="#{bindings.CriteriaCompeticionQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.CompeticionVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.CompeticionVO1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="resId1" styleClass="AFStretchWidth"
+                  contentDelivery="lazy"
+                  partialTriggers=":::d1 :::popupDelete:idDialogAvisoborrado"
+                  width="AFStretchWidth">
+          <af:column sortProperty="#{bindings.CompeticionVO1.hints.Nombre.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.CompeticionVO1.hints.Nombre.label}"
+                     id="resId1c1">
+            <af:outputText value="#{row.Nombre}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.CompeticionVO1.hints.Inicio.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.CompeticionVO1.hints.Inicio.label}"
+                     id="resId1c2">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.Inicio}" id="id2"/>
+            </f:facet>
+            <af:outputText value="#{row.Inicio}" id="ot1">
+              <af:convertDateTime pattern="#{bindings.CompeticionVO1.hints.Inicio.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.CompeticionVO1.hints.Fin.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.CompeticionVO1.hints.Fin.label}"
+                     id="resId1c3">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.Fin}" id="id1"/>
+            </f:facet>
+            <af:outputText value="#{row.Fin}" id="ot4">
+              <af:convertDateTime pattern="#{bindings.CompeticionVO1.hints.Fin.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.CompeticionVO1.hints.Region.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.CompeticionVO1.hints.Region.label}"
+                     id="resId1c4">            
+              <af:outputText value="#{row.RegionName}" id="ot5"/>             
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelGroupLayout>
+    
+    <!-- POPUP EDICIÓN COMPETICIÓN -->
+    <af:popup id="p1"
+              binding="#{pageFlowScope.CompeticionBean.popupEditCompeticion}"
+              popupCanceledListener="#{pageFlowScope.CompeticionBean.cancelEdicion}">
+      <af:dialog id="d1" title="Competición"
+                 dialogListener="#{pageFlowScope.CompeticionBean.commitCompeticion}">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.Nombre.inputValue}"
+                        label="#{bindings.Nombre.hints.label}"
+                        required="#{bindings.Nombre.hints.mandatory}"
+                        columns="#{bindings.Nombre.hints.displayWidth}"
+                        maximumLength="#{bindings.Nombre.hints.precision}"
+                        shortDesc="#{bindings.Nombre.hints.tooltip}" id="it1">
+            <f:validator binding="#{bindings.Nombre.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.Inicio.inputValue}"
+                        label="#{bindings.Inicio.hints.label}"
+                        required="#{bindings.Inicio.hints.mandatory}"
+                        shortDesc="#{bindings.Inicio.hints.tooltip}" id="id4">
+            <f:validator binding="#{bindings.Inicio.validator}"/>
+            <af:convertDateTime pattern="#{bindings.Inicio.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.Fin.inputValue}"
+                        label="#{bindings.Fin.hints.label}"
+                        required="#{bindings.Fin.hints.mandatory}"
+                        shortDesc="#{bindings.Fin.hints.tooltip}" id="id3">
+            <f:validator binding="#{bindings.Fin.validator}"/>
+            <af:convertDateTime pattern="#{bindings.Fin.format}"/>
+          </af:inputDate>
+          <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                              label="#{bindings.Region.label}"
+                              required="#{bindings.Region.hints.mandatory}"
+                              shortDesc="#{bindings.Region.hints.tooltip}"
+                              id="soc1">
+            <f:selectItems value="#{bindings.Region.items}" id="si1"/>
+          </af:selectOneChoice>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    
+    <!-- Se incluye popup de confirmación de borrado -->
+    <f:subview id="popupDelete">
+      <jsp:include page="/WEB-INF/fragments/popupConfirmacionBorrado.jsff"/>
+    </f:subview>
+        
+  </af:panelGroupLayout>
 </jsp:root>

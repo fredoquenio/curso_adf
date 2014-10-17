@@ -62,4 +62,8 @@
     ViewLink="com.atsistemas.model.view.link.PartidoVisitanteFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.atsistemas.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

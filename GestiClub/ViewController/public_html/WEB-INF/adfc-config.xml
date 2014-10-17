@@ -10,4 +10,9 @@
     <managed-bean-class id="__15">com.atsistemas.beans.DynamicRegionBean</managed-bean-class>
     <managed-bean-scope id="__14">pageFlow</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name id="__2">PopupConfirmDeleteBean</managed-bean-name>
+    <managed-bean-class id="__1">com.atsistemas.beans.PopupConfirmDeleteBean</managed-bean-class>
+    <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

@@ -10,18 +10,73 @@
        Competicion.NOMBRE, 
        Competicion.INICIO, 
        Competicion.FIN, 
-       Competicion.REGION"
-  FromList="COMPETICION Competicion"
+       Competicion.REGION, 
+       Regions.REGION_NAME, 
+       Regions.REGION_ID"
+  FromList="COMPETICION Competicion, REGIONS Regions"
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  Where="Competicion.REGION = Regions.REGION_ID">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
   </DesignTime>
+  <Variable
+    Name="fecha"
+    Kind="viewcriteria"
+    Type="java.sql.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.atsistemas.model.view.CompeticionVO.fecha_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="RegionsVO"
+    ViewObjectName="com.atsistemas.model.view.RegionsVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Region"
+    ListVOName="RegionsVO"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Region"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RegionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RegionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="Competicion"
     Entity="com.atsistemas.model.entity.CompeticionEO"/>
+  <EntityUsage
+    Name="Regions"
+    Entity="com.atsistemas.model.entity.RegionsEO"
+    Association="com.atsistemas.model.entity.assoc.CompeticionRegionFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.CompeticionRegionFkAssoc.Regions"
+    SourceUsage="com.atsistemas.model.view.CompeticionVO.Competicion"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.CompeticionEO.Region"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.RegionsEO.RegionId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
   <ViewAttribute
     Name="Id"
     IsNotNull="true"
@@ -56,10 +111,102 @@
     PrecisionRule="true"
     EntityAttrName="Region"
     EntityUsage="Competicion"
-    AliasName="REGION"/>
+    AliasName="REGION"
+    LOVName="LOV_Region">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RegionName"
+    PrecisionRule="true"
+    EntityAttrName="RegionName"
+    EntityUsage="Regions"
+    AliasName="REGION_NAME"/>
+  <ViewAttribute
+    Name="RegionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RegionId"
+    EntityUsage="Regions"
+    AliasName="REGION_ID"/>
+  <ViewCriteria
+    Name="CriteriaCompeticion"
+    ViewObjectName="com.atsistemas.model.view.CompeticionVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Nombre"
+        ViewAttribute="Nombre"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Inicio"
+        ViewAttribute="Inicio"
+        Operator="ONORBEFORE"
+        Conjunction="AND"
+        Value=":fecha"
+        IsBindVarValue="true"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="CompeticionVOCriteria_vcrow4_Fin"
+        ViewAttribute="Fin"
+        Operator="ONORAFTER"
+        Conjunction="AND"
+        Value=":fecha"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Region"
+        ViewAttribute="Region"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
   <ViewLinkAccessor
     Name="PartidoView"
     ViewLink="com.atsistemas.model.view.link.PartidoCompeticionFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.atsistemas.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

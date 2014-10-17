@@ -12,23 +12,27 @@
           <f:facet name="first">
             <af:panelGroupLayout id="pgl1" layout="vertical">
               <af:commandButton text="Inicio" id="cb4" partialSubmit="true"/>                                 
+              <af:spacer width="100" height="10" id="s1"/>
               <af:commandButton text="Competición" id="cb1"
                                 partialSubmit="true">
                     <af:setPropertyListener from="competicion"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
               </af:commandButton>
+              <af:spacer width="100" height="10" id="s2"/>
               <af:commandButton text="Partidos" id="cb2" 
                                 partialSubmit="true">
                 <af:setPropertyListener from="partidos"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
               </af:commandButton>
+              <af:spacer width="100" height="10" id="s3"/>
               <af:commandButton text="Estadios" id="cb3" partialSubmit="true">
                      <af:setPropertyListener from="estadios"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
               </af:commandButton>
+              <af:spacer width="100" height="10" id="s4"/>
             </af:panelGroupLayout>
           </f:facet>
           <f:facet name="second">

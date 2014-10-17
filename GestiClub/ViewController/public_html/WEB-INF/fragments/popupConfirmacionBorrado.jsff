@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:popup id="popupAvisoBorrado"
+            popupCanceledListener="#{pageFlowScope.PopupConfirmDeleteBean.cancelDelete}"
+            binding="#{pageFlowScope.PopupConfirmDeleteBean.popupAvisoDelete}">
+    <af:dialog id="idDialogAvisoborrado" title="Aviso"
+               dialogListener="#{pageFlowScope.PopupConfirmDeleteBean.confirmDelete}"
+               type="yesNo">
+      <af:message id="idMessageAvisoDelete" messageType="warning"
+                  binding="#{pageFlowScope.PopupConfirmDeleteBean.messageAvisoDelete}"/>
+    </af:dialog>
+  </af:popup>
+</jsp:root>
