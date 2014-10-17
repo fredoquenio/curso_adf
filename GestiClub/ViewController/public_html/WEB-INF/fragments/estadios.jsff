@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-          xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelGroupLayout layout="vertical" id="pgl1" styleClass="AFStretchWidth">
-    <af:panelHeader text="EstadioEO" id="ph1">
+          xmlns:f="http://java.sun.com/jsf/core">                              
+          
+  <af:panelGroupLayout layout="vertical" id="pgl1" styleClass="AFStretchWidth">    
+    
+    <af:panelHeader text="Gestión de Estadios" id="ph1">
       <af:query id="qryId1" headerText="Search" disclosed="true"
                 value="#{bindings.EstadioVOCriteriaQuery.queryDescriptor}"
                 model="#{bindings.EstadioVOCriteriaQuery.queryModel}"
@@ -14,9 +16,12 @@
     <af:panelCollection id="pc1" defaultToolbarItemDisplay="icon">
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:commandButton text="Add" id="cb1"/>
-          <af:commandButton text="Edit" id="cb2"/>
-          <af:commandButton text="Delete" id="cb3"/>
+          <af:commandButton text="Add" id="cb1"
+                            actionListener="#{pageFlowScope.EstadioBean.addEstadio}"/>
+          <af:commandButton text="Edit" id="cb2"
+                            actionListener="#{pageFlowScope.EstadioBean.editEstadio}"/>
+          <af:commandButton text="Delete" id="cb3"
+                            actionListener="#{pageFlowScope.EstadioBean.deleteEstadio}"/>
         </af:toolbar>
       </f:facet>
       <af:table value="#{bindings.EstadioVO.collectionModel}" var="row"
@@ -26,7 +31,8 @@
                 rowBandingInterval="0"
                 selectedRowKeys="#{bindings.EstadioVO.collectionModel.selectedRow}"
                 selectionListener="#{bindings.EstadioVO.collectionModel.makeCurrent}"
-                rowSelection="single" id="resId1" styleClass="AFStretchWidth">
+                rowSelection="single" id="resId1" styleClass="AFStretchWidth"
+                partialTriggers=":::d1">
         <af:column sortProperty="#{bindings.EstadioVO.hints.Id.name}"
                    sortable="true"
                    headerText="#{bindings.EstadioVO.hints.Id.label}"
@@ -57,6 +63,9 @@
                    id="c1">
           <af:outputText value="#{row.RegionName}" id="ot3"/>
         </af:column>
+        <af:clientListener method="handleTableDoubleClick" type="dblClick"/>
+        <af:serverListener type="TableDoubleClickEvent"
+                           method="#{pageFlowScope.EstadioBean.handleTableDoubleClick}"/>       
       </af:table>
       <f:facet name="secondaryToolbar">
         <af:toolbar id="t2">
@@ -68,4 +77,51 @@
       </f:facet>
     </af:panelCollection>
   </af:panelGroupLayout>
+  <af:popup id="p1" binding="#{pageFlowScope.EstadioBean.popupEstadio}"
+            popupCanceledListener="#{pageFlowScope.EstadioBean.closePopupEstadio}">
+    <af:dialog id="d1">
+      <af:panelFormLayout id="pfl1">        
+        <af:panelLabelAndMessage label="#{bindings.Id.hints.label}" id="plam1">
+            <af:outputText value="#{bindings.Id.inputValue}"
+                           shortDesc="#{bindings.Id.hints.tooltip}" id="it3"/>
+        </af:panelLabelAndMessage>
+        <af:inputText value="#{bindings.Nombre.inputValue}"
+                      label="#{bindings.Nombre.hints.label}"
+                      required="#{bindings.Nombre.hints.mandatory}"
+                      columns="#{bindings.Nombre.hints.displayWidth}"
+                      maximumLength="#{bindings.Nombre.hints.precision}"
+                      shortDesc="#{bindings.Nombre.hints.tooltip}" id="it4">
+          <f:validator binding="#{bindings.Nombre.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Capacidad.inputValue}"
+                      label="#{bindings.Capacidad.hints.label}"
+                      required="#{bindings.Capacidad.hints.mandatory}"
+                      columns="#{bindings.Capacidad.hints.displayWidth}"
+                      maximumLength="#{bindings.Capacidad.hints.precision}"
+                      shortDesc="#{bindings.Capacidad.hints.tooltip}" id="it1">
+          <f:validator binding="#{bindings.Capacidad.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.Capacidad.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Region.inputValue}"
+                      label="#{bindings.Region.hints.label}"
+                      required="#{bindings.Region.hints.mandatory}"
+                      columns="#{bindings.Region.hints.displayWidth}"
+                      maximumLength="#{bindings.Region.hints.precision}"
+                      shortDesc="#{bindings.Region.hints.tooltip}" id="it5">
+          <f:validator binding="#{bindings.Region.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.Region.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.RegionName.inputValue}"
+                      label="#{bindings.RegionName.hints.label}"
+                      required="#{bindings.RegionName.hints.mandatory}"
+                      columns="#{bindings.RegionName.hints.displayWidth}"
+                      maximumLength="#{bindings.RegionName.hints.precision}"
+                      shortDesc="#{bindings.RegionName.hints.tooltip}" id="it2">
+          <f:validator binding="#{bindings.RegionName.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </af:dialog>
+  </af:popup>
 </jsp:root>

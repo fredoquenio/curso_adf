@@ -27,5 +27,38 @@
             RequiresUpdateModel="true" Action="commitTransaction"/>
     <action id="Rollback" DataControl="AppModuleDataControl"
             RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="EstadioVOIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EstadioVOIterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EstadioVOIterator" id="Capacidad">
+      <AttrNames>
+        <Item Value="Capacidad"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EstadioVOIterator" id="Region">
+      <AttrNames>
+        <Item Value="Region"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EstadioVOIterator" id="RegionName">
+      <AttrNames>
+        <Item Value="RegionName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="EstadioVOIterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.EstadioVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="EstadioVOIterator" id="Delete"
+            InstanceName="AppModuleDataControl.EstadioVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
   </bindings>
 </pageDefinition>
