@@ -9,8 +9,11 @@
   SelectList="Estadio.ID, 
        Estadio.NOMBRE, 
        Estadio.CAPACIDAD, 
-       Estadio.REGION"
-  FromList="ESTADIO Estadio"
+       Estadio.REGION, 
+       RegionEstadio.REGION_NAME, 
+       RegionEstadio.REGION_ID"
+  FromList="ESTADIO Estadio, REGIONS RegionEstadio"
+  Where="Estadio.REGION = RegionEstadio.REGION_ID(+)"
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
@@ -18,9 +21,36 @@
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
   </DesignTime>
+  <Variable
+    Name="capacidadDesde"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="capacidadHasta"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
   <EntityUsage
     Name="Estadio"
     Entity="com.atsistemas.model.entity.EstadioEO"/>
+  <EntityUsage
+    Name="RegionEstadio"
+    Entity="com.atsistemas.model.entity.RegionsEO"
+    Association="com.atsistemas.model.entity.assoc.EstadioRegionFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.EstadioRegionFkAssoc.Regions"
+    SourceUsage="com.atsistemas.model.view.EstadioVO.Estadio"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.EstadioEO.Region"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.RegionsEO.RegionId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
   <ViewAttribute
     Name="Id"
     IsNotNull="true"
@@ -48,6 +78,19 @@
     EntityAttrName="Region"
     EntityUsage="Estadio"
     AliasName="REGION"/>
+  <ViewAttribute
+    Name="RegionName"
+    PrecisionRule="true"
+    EntityAttrName="RegionName"
+    EntityUsage="RegionEstadio"
+    AliasName="REGION_NAME"/>
+  <ViewAttribute
+    Name="RegionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RegionId"
+    EntityUsage="RegionEstadio"
+    AliasName="REGION_ID"/>
   <ViewCriteria
     Name="EstadioVOCriteria"
     ViewObjectName="com.atsistemas.model.view.EstadioVO"
@@ -80,8 +123,49 @@
         Operator="CONTAINS"
         Conjunction="AND"
         Required="Optional"/>
+      <ViewCriteriaItemCompound
+        ViewAttribute="Capacidad">
+        <ViewCriteria
+          Name="EstadioVOCriteria_vcrow39_Capacidad_itemHolder"
+          ViewObjectName="com.atsistemas.model.view.EstadioVO"
+          Conjunction="OR">
+          <ViewCriteriaRow
+            Name="vcrow75"
+            Conjunction="AND">
+            <ViewCriteriaItem
+              Name="EstadioVOCriteria_vcrow39_Capacidad"
+              ViewAttribute="Capacidad"
+              Operator=">="
+              Conjunction="AND"
+              Value=":capacidadDesde"
+              IsBindVarValue="true"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+          <ViewCriteriaRow
+            Name="vcrow76"
+            Conjunction="AND">
+            <ViewCriteriaItem
+              Name="EstadioVOCriteria_vcrow39_Capacidad_EstadioVOCriteria_vcrow39_Capacidad_itemHolder_vcrow76_Capacidad"
+              ViewAttribute="Capacidad"
+              Operator="&lt;="
+              Conjunction="AND"
+              Value=":capacidadHasta"
+              IsBindVarValue="true"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItemCompound>
+      <ViewCriteriaItem
+        Name="RegionName"
+        ViewAttribute="RegionName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
   <ViewLinkAccessor
     Name="PartidoView"
     ViewLink="com.atsistemas.model.view.link.PartidoEstadioFkLink"

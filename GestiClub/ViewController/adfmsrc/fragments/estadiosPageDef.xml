@@ -19,8 +19,13 @@
           <Item Value="Nombre"/>
           <Item Value="Capacidad"/>
           <Item Value="Region"/>
+          <Item Value="RegionName"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
   </bindings>
 </pageDefinition>

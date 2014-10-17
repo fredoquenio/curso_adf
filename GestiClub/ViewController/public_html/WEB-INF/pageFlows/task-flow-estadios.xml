@@ -2,6 +2,11 @@
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="task-flow-estadios">
     <default-activity id="__1">estadios</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__3">EstadioBean</managed-bean-name>
+      <managed-bean-class id="__4">com.atsistemas.beans.EstadioBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="estadios">
       <page>/WEB-INF/fragments/estadios.jsff</page>
     </view>

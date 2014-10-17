@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
-          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
   <af:panelGroupLayout layout="vertical" id="pgl1" styleClass="AFStretchWidth">
     <af:panelHeader text="EstadioEO" id="ph1">
       <af:query id="qryId1" headerText="Search" disclosed="true"
@@ -8,48 +9,63 @@
                 model="#{bindings.EstadioVOCriteriaQuery.queryModel}"
                 queryListener="#{bindings.EstadioVOCriteriaQuery.processQuery}"
                 queryOperationListener="#{bindings.EstadioVOCriteriaQuery.processQueryOperation}"
-                resultComponentId="::resId1"/>
+                resultComponentId="::pc1:resId1"/>
     </af:panelHeader>
-    <af:table value="#{bindings.EstadioVO.collectionModel}" var="row"
-              rows="#{bindings.EstadioVO.rangeSize}"
-              emptyText="#{bindings.EstadioVO.viewable ? 'No data to display.' : 'Access Denied.'}"
-              fetchSize="#{bindings.EstadioVO.rangeSize}" rowBandingInterval="0"
-              selectedRowKeys="#{bindings.EstadioVO.collectionModel.selectedRow}"
-              selectionListener="#{bindings.EstadioVO.collectionModel.makeCurrent}"
-              rowSelection="single" id="resId1" styleClass="AFStretchWidth">
-      <af:column sortProperty="#{bindings.EstadioVO.hints.Id.name}"
-                 sortable="true"
-                 headerText="#{bindings.EstadioVO.hints.Id.label}"
-                 id="resId1c1">
-        <af:outputText value="#{row.Id}" id="ot4">
-          <af:convertNumber groupingUsed="false"
-                            pattern="#{bindings.EstadioVO.hints.Id.format}"/>
-        </af:outputText>
-      </af:column>
-      <af:column sortProperty="#{bindings.EstadioVO.hints.Nombre.name}"
-                 sortable="true"
-                 headerText="#{bindings.EstadioVO.hints.Nombre.label}"
-                 id="resId1c2">
-        <af:outputText value="#{row.Nombre}" id="ot1"/>
-      </af:column>
-      <af:column sortProperty="#{bindings.EstadioVO.hints.Capacidad.name}"
-                 sortable="true"
-                 headerText="#{bindings.EstadioVO.hints.Capacidad.label}"
-                 id="resId1c3">
-        <af:outputText value="#{row.Capacidad}" id="ot2">
-          <af:convertNumber groupingUsed="false"
-                            pattern="#{bindings.EstadioVO.hints.Capacidad.format}"/>
-        </af:outputText>
-      </af:column>
-      <af:column sortProperty="#{bindings.EstadioVO.hints.Region.name}"
-                 sortable="true"
-                 headerText="#{bindings.EstadioVO.hints.Region.label}"
-                 id="resId1c4">
-        <af:outputText value="#{row.Region}" id="ot3">
-          <af:convertNumber groupingUsed="false"
-                            pattern="#{bindings.EstadioVO.hints.Region.format}"/>
-        </af:outputText>
-      </af:column>
-    </af:table>
+    <af:panelCollection id="pc1" defaultToolbarItemDisplay="icon">
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:commandButton text="Add" id="cb1"/>
+          <af:commandButton text="Edit" id="cb2"/>
+          <af:commandButton text="Delete" id="cb3"/>
+        </af:toolbar>
+      </f:facet>
+      <af:table value="#{bindings.EstadioVO.collectionModel}" var="row"
+                rows="#{bindings.EstadioVO.rangeSize}"
+                emptyText="#{bindings.EstadioVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.EstadioVO.rangeSize}"
+                rowBandingInterval="0"
+                selectedRowKeys="#{bindings.EstadioVO.collectionModel.selectedRow}"
+                selectionListener="#{bindings.EstadioVO.collectionModel.makeCurrent}"
+                rowSelection="single" id="resId1" styleClass="AFStretchWidth">
+        <af:column sortProperty="#{bindings.EstadioVO.hints.Id.name}"
+                   sortable="true"
+                   headerText="#{bindings.EstadioVO.hints.Id.label}"
+                   id="resId1c1">
+          <af:outputText value="#{row.Id}" id="ot4">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.EstadioVO.hints.Id.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.EstadioVO.hints.Nombre.name}"
+                   sortable="true"
+                   headerText="#{bindings.EstadioVO.hints.Nombre.label}"
+                   id="resId1c2">
+          <af:outputText value="#{row.Nombre}" id="ot1"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.EstadioVO.hints.Capacidad.name}"
+                   sortable="true"
+                   headerText="#{bindings.EstadioVO.hints.Capacidad.label}"
+                   id="resId1c3">
+          <af:outputText value="#{row.Capacidad}" id="ot2">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.EstadioVO.hints.Capacidad.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.EstadioVO.hints.RegionName.name}"
+                   sortable="false"
+                   headerText="#{bindings.EstadioVO.hints.RegionName.label}"
+                   id="c1">
+          <af:outputText value="#{row.RegionName}" id="ot3"/>
+        </af:column>
+      </af:table>
+      <f:facet name="secondaryToolbar">
+        <af:toolbar id="t2">
+          <af:commandButton text="Save" id="cb4"
+                            actionListener="#{pageFlowScope.EstadioBean.saveEstadio}"/>
+          <af:commandButton text="Rollback" id="cb5"
+                            actionListener="#{pageFlowScope.EstadioBean.rollbackEstadio}"/>
+        </af:toolbar>
+      </f:facet>
+    </af:panelCollection>
   </af:panelGroupLayout>
 </jsp:root>
