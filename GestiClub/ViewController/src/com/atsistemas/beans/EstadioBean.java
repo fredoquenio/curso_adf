@@ -4,6 +4,7 @@ import javax.faces.event.ActionEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
 
+import oracle.adf.view.rich.component.rich.data.RichTable;
 import oracle.adf.view.rich.event.PopupCanceledEvent;
 
 import oracle.adf.view.rich.render.ClientEvent;
@@ -20,7 +21,7 @@ public class EstadioBean extends MainBean {
     public void saveEstadio(ActionEvent actionEvent) {
         OperationBinding operationBinding = super.getBindings().getOperationBinding("Commit");
         operationBinding.execute();
-        super.showInfoMessage("Cambios guardados con éxito");
+        super.showInfoMessage("Cambios guardados con éxito");       
     }
     
     public void rollbackEstadio(ActionEvent actionEvent) {

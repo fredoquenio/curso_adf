@@ -42,11 +42,6 @@
         <Item Value="Capacidad"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="EstadioVOIterator" id="Region">
-      <AttrNames>
-        <Item Value="Region"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="EstadioVOIterator" id="RegionName">
       <AttrNames>
         <Item Value="RegionName"/>
@@ -60,5 +55,7 @@
             InstanceName="AppModuleDataControl.EstadioVO"
             DataControl="AppModuleDataControl" RequiresUpdateModel="false"
             Action="removeCurrentRow"/>
+    <list IterBinding="EstadioVOIterator" StaticList="false" Uses="LOV_Region"
+          id="Region" DTSupportsMRU="true"/>
   </bindings>
 </pageDefinition>

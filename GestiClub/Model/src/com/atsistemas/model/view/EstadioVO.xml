@@ -29,6 +29,28 @@
     Name="capacidadHasta"
     Kind="viewcriteria"
     Type="oracle.jbo.domain.Number"/>
+  <ViewAccessor
+    Name="RegionsVO1"
+    ViewObjectName="com.atsistemas.model.view.RegionsVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Region"
+    ListVOName="RegionsVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_Region_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Region"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RegionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RegionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="Estadio"
     Entity="com.atsistemas.model.entity.EstadioEO"/>
@@ -77,7 +99,15 @@
     PrecisionRule="true"
     EntityAttrName="Region"
     EntityUsage="Estadio"
-    AliasName="REGION"/>
+    AliasName="REGION"
+    LOVName="LOV_Region">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="RegionName"
     PrecisionRule="true"

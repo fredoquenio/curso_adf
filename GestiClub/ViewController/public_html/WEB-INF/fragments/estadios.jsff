@@ -15,13 +15,15 @@
     </af:panelHeader>
     <af:panelCollection id="pc1" defaultToolbarItemDisplay="icon">
       <f:facet name="toolbar">
-        <af:toolbar id="t1">
+        <af:toolbar id="t1" partialTriggers="::qryId1 ::d1">
           <af:commandButton text="Add" id="cb1"
                             actionListener="#{pageFlowScope.EstadioBean.addEstadio}"/>
           <af:commandButton text="Edit" id="cb2"
-                            actionListener="#{pageFlowScope.EstadioBean.editEstadio}"/>
+                            actionListener="#{pageFlowScope.EstadioBean.editEstadio}"
+                             disabled="#{bindings.EstadioVOIterator.currentRowIndexInRange eq '-1'}"/>
           <af:commandButton text="Delete" id="cb3"
-                            actionListener="#{pageFlowScope.EstadioBean.deleteEstadio}"/>
+                            actionListener="#{pageFlowScope.EstadioBean.deleteEstadio}"
+                            disabled="#{bindings.EstadioVOIterator.currentRowIndexInRange eq '-1'}"/>
         </af:toolbar>
       </f:facet>
       <af:table value="#{bindings.EstadioVO.collectionModel}" var="row"
@@ -102,25 +104,14 @@
           <f:validator binding="#{bindings.Capacidad.validator}"/>
           <af:convertNumber groupingUsed="false"
                             pattern="#{bindings.Capacidad.format}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.Region.inputValue}"
-                      label="#{bindings.Region.hints.label}"
-                      required="#{bindings.Region.hints.mandatory}"
-                      columns="#{bindings.Region.hints.displayWidth}"
-                      maximumLength="#{bindings.Region.hints.precision}"
-                      shortDesc="#{bindings.Region.hints.tooltip}" id="it5">
-          <f:validator binding="#{bindings.Region.validator}"/>
-          <af:convertNumber groupingUsed="false"
-                            pattern="#{bindings.Region.format}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.RegionName.inputValue}"
-                      label="#{bindings.RegionName.hints.label}"
-                      required="#{bindings.RegionName.hints.mandatory}"
-                      columns="#{bindings.RegionName.hints.displayWidth}"
-                      maximumLength="#{bindings.RegionName.hints.precision}"
-                      shortDesc="#{bindings.RegionName.hints.tooltip}" id="it2">
-          <f:validator binding="#{bindings.RegionName.validator}"/>
-        </af:inputText>
+        </af:inputText>      
+        <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                              label="#{bindings.Region.label}"
+                              required="#{bindings.Region.hints.mandatory}"
+                              shortDesc="#{bindings.Region.hints.tooltip}"
+                              id="soc1">
+            <f:selectItems value="#{bindings.Region.items}" id="si1"/>
+         </af:selectOneChoice>        
       </af:panelFormLayout>
     </af:dialog>
   </af:popup>
