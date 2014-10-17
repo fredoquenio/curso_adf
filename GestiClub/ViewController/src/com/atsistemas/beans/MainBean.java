@@ -21,7 +21,7 @@ public class MainBean {
     }
    
     public void showInfoMessage(String message) {
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Mensaje de info");
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, message);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }   
     
