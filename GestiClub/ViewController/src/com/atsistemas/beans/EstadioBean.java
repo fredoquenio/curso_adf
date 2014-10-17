@@ -27,7 +27,7 @@ public class EstadioBean extends MainBean {
     public void rollbackEstadio(ActionEvent actionEvent) {
         OperationBinding operationBinding = super.getBindings().getOperationBinding("Rollback");
         operationBinding.execute();
-        super.showInfoMessage("Cambios no guardados");
+        super.showInfoMessage("Cambios cancelados con éxito");
     }
 
     public void editEstadio(ActionEvent actionEvent) {

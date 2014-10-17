@@ -11,13 +11,29 @@
                           id="ps1">
           <f:facet name="first">
             <af:panelGroupLayout id="pgl1" layout="vertical">
-              <af:commandButton text="Inicio" id="cb4" partialSubmit="true"/>                                 
+              <af:commandButton text="Inicio" id="cb4" partialSubmit="true">
+                    <af:setPropertyListener from="inicio"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                     <af:setPropertyListener from=""
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                    <af:setPropertyListener from="inicio"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>   
+              </af:commandButton>
               <af:spacer width="100" height="10" id="s1"/>
               <af:commandButton text="Competición" id="cb1"
                                 partialSubmit="true">
                     <af:setPropertyListener from="competicion"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
+                    <af:setPropertyListener from="Gestión de competiciones"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                    <af:setPropertyListener from="competicion"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>                 
               </af:commandButton>
               <af:spacer width="100" height="10" id="s2"/>
               <af:commandButton text="Partidos" id="cb2" 
@@ -25,11 +41,23 @@
                 <af:setPropertyListener from="partidos"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
+                 <af:setPropertyListener from="Gestión de partidos"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                     <af:setPropertyListener from="partidos"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>                                        
               </af:commandButton>
               <af:spacer width="100" height="10" id="s3"/>
               <af:commandButton text="Estadios" id="cb3" partialSubmit="true">
                      <af:setPropertyListener from="estadios"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                     <af:setPropertyListener from="Gestión de estadios"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                     <af:setPropertyListener from="estadios"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
                                         type="action"/>
               </af:commandButton>
               <af:spacer width="100" height="10" id="s4"/>
@@ -37,8 +65,28 @@
           </f:facet>
           <f:facet name="second">
             <af:panelGroupLayout id="pgl2">
-              <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
-                         partialTriggers="::cb1 ::cb2 ::cb4"
+              <af:spacer width="1" height="10" id="s5"/>
+              <af:panelGroupLayout id="pgl3" 
+                                   layout="horizontal">
+                <af:commandLink text="GestiClub" id="cl1">
+                          <af:setPropertyListener from="inicio"
+                                    to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                    type="action"/>
+                </af:commandLink>
+                <af:spacer width="4" height="1" id="s6"/>
+                <af:outputText value=" --> " id="ot1" partialTriggers="cb4 cb1 cb2 cb3"
+                               visible="#{!empty pageFlowScope.MainBean.breadcrumbNivel1Text}"/>
+                <af:spacer width="4" height="1" id="s7"/>
+                <af:commandLink id="cl2"                                 
+                                text="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                partialTriggers="cb4 cb1 cb2 cb3">
+                          <af:setPropertyListener from="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                    to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                    type="action"/>
+                </af:commandLink>
+              </af:panelGroupLayout>
+              <af:spacer width="1" height="50" id="s8"/>
+              <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"                        
                          styleClass="AFStretchWidth"/>
             </af:panelGroupLayout>
             <!-- id="af_twocol_left_sidebar_split_stretched"   -->

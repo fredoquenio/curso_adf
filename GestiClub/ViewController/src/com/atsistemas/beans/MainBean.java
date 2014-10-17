@@ -4,17 +4,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import oracle.adf.model.BindingContext;
-import oracle.adf.view.rich.component.rich.RichPopup;
-import oracle.adf.view.rich.component.rich.output.RichMessage;
-import oracle.adf.view.rich.event.DialogEvent;
-import oracle.adf.view.rich.event.PopupCanceledEvent;
 
 import oracle.binding.BindingContainer;
-import oracle.binding.OperationBinding;
 
 public class MainBean {
-
-       public MainBean() {
+         
+    private String breadcrumbNivel1Text = "";
+    private String breadcrumbNivel1NavigationText = "";
+    
+    public MainBean() {
     }
     
     public BindingContainer getBindings() {
@@ -30,8 +28,21 @@ public class MainBean {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, message);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+       
+    public void setBreadcrumbNivel1Text(String breadcrumbNivel1Text) {
+        this.breadcrumbNivel1Text = breadcrumbNivel1Text;
+    }
 
-    
+    public String getBreadcrumbNivel1Text() {
+        return breadcrumbNivel1Text;
+    }
 
+    public void setBreadcrumbNivel1NavigationText(String breadcrumbNivel1NavigationText) {
+        this.breadcrumbNivel1NavigationText = breadcrumbNivel1NavigationText;
+    }
+
+    public String getBreadcrumbNivel1NavigationText() {
+        return breadcrumbNivel1NavigationText;
+    }
    
 }

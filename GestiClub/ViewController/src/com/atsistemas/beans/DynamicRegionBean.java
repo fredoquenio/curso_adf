@@ -9,6 +9,7 @@ public class DynamicRegionBean {
     private String taskFlowEstadiosId = "/WEB-INF/pageFlows/task-flow-estadios.xml#task-flow-estadios";
     
     private String currentTF = "bienvenida";
+   
     
     public DynamicRegionBean() {
     }
@@ -37,4 +38,5 @@ public class DynamicRegionBean {
     public String getCurrentTF() {
         return currentTF;
     }
+
 }
