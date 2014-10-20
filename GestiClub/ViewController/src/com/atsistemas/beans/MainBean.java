@@ -44,5 +44,4 @@ public class MainBean {
     public String getBreadcrumbNivel1NavigationText() {
         return breadcrumbNivel1NavigationText;
     }
-   
 }

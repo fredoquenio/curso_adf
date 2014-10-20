@@ -7,9 +7,31 @@
       <managed-bean-class id="__4">com.atsistemas.beans.EstadioBean</managed-bean-class>
       <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name id="__18">MainBean</managed-bean-name>
+      <managed-bean-class id="__17">com.atsistemas.beans.MainBean</managed-bean-class>
+      <managed-bean-scope id="__15">pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="estadios">
       <page>/WEB-INF/fragments/estadios.jsff</page>
     </view>
+    <view id="detalleEstadio">
+      <page>/WEB-INF/fragments/detalleEstadio.jsff</page>
+    </view>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">estadios</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome id="__10">detalle</from-outcome>
+        <to-activity-id id="__9">detalleEstadio</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">detalleEstadio</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__19">volver</from-outcome>
+        <to-activity-id id="__14">estadios</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

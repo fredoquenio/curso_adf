@@ -15,6 +15,8 @@
           usageId="com_atsistemas_view_estadiosPageDef"/>
     <page path="/WEB-INF/fragments/competicion.jsff"
           usageId="com_atsistemas_view_competicionPageDef"/>
+    <page path="/WEB-INF/fragments/detalleEstadio.jsff"
+          usageId="com_atsistemas_view_detalleEstadioPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_atsistemas_view_indexPageDef"
@@ -25,6 +27,8 @@
           path="fragments.estadiosPageDef"/>
     <page id="com_atsistemas_view_competicionPageDef"
           path="fragments.competicionPageDef"/>
+    <page id="com_atsistemas_view_detalleEstadioPageDef"
+          path="fragments.detalleEstadioPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="com.atsistemas.model"

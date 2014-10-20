@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <h1>DETALLE DE ESTADIO</h1>        
+  <af:panelFormLayout id="pfl1">
+    <af:panelLabelAndMessage label="#{bindings.Id.hints.label}" id="plam1">
+        <af:outputText value="#{bindings.Id.inputValue}"
+                       shortDesc="#{bindings.Id.hints.tooltip}" id="it3"/>
+    </af:panelLabelAndMessage>
+    <af:inputText value="#{bindings.Nombre.inputValue}"
+                  label="#{bindings.Nombre.hints.label}"
+                  required="#{bindings.Nombre.hints.mandatory}"
+                  columns="#{bindings.Nombre.hints.displayWidth}"
+                  maximumLength="#{bindings.Nombre.hints.precision}"
+                  shortDesc="#{bindings.Nombre.hints.tooltip}" id="it4">
+      <f:validator binding="#{bindings.Nombre.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Capacidad.inputValue}"
+                  label="#{bindings.Capacidad.hints.label}"
+                  required="#{bindings.Capacidad.hints.mandatory}"
+                  columns="#{bindings.Capacidad.hints.displayWidth}"
+                  maximumLength="#{bindings.Capacidad.hints.precision}"
+                  shortDesc="#{bindings.Capacidad.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.Capacidad.validator}"/>
+      <af:convertNumber groupingUsed="false"
+                        pattern="#{bindings.Capacidad.format}"/>
+    </af:inputText>
+    <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                        label="#{bindings.Region.label}"
+                        required="#{bindings.Region.hints.mandatory}"
+                        shortDesc="#{bindings.Region.hints.tooltip}" id="soc1">
+      <f:selectItems value="#{bindings.Region.items}" id="si1"/>
+    </af:selectOneChoice>
+  </af:panelFormLayout>
+  <af:commandButton text="Volver" id="cb1" action="volver"/>
+</jsp:root>

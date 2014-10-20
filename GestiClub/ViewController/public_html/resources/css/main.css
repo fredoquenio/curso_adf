@@ -53,19 +53,19 @@ h3
 #menu a:link, #menu a:visited {
 	color: #5E7830;
 	display: block;
-	background: url("../resources/img/menu1.gif") ;
+	background: url("../img/menu1.gif") ;
 	padding: 8px 0 0 10px;
 }
 	
 #menu a:hover {
 	color: #26370A;
-	background: url("../resources/img/menu1.gif")   0 -32px;
+	background: url("../img/menu1.gif")   0 -32px;
 	padding: 8px 0 0 10px;
 }
 	
 #menu a:active {
 	color: #26370A;
-	background: url("../resources/img/menu1.gif") 0 -64px;
+	background: url("../img/menu1.gif") 0 -64px;
 	padding: 8px 0 0 10px;
 }
 

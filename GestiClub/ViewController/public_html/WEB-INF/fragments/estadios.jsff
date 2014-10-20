@@ -4,8 +4,8 @@
           xmlns:f="http://java.sun.com/jsf/core">                              
           
   <af:panelGroupLayout layout="vertical" id="pgl1" styleClass="AFStretchWidth">    
-    
-    <af:panelHeader text="Gestión de Estadios" id="ph1">
+    <h1>GESTIÓN DE ESTADIOS</h1>
+    <af:panelHeader text="" id="ph1">
       <af:query id="qryId1" headerText="Search" disclosed="true"
                 value="#{bindings.EstadioVOCriteriaQuery.queryDescriptor}"
                 model="#{bindings.EstadioVOCriteriaQuery.queryModel}"
@@ -18,9 +18,10 @@
         <af:toolbar id="t1" partialTriggers="::qryId1 ::d1">
           <af:commandButton text="Add" id="cb1"
                             actionListener="#{pageFlowScope.EstadioBean.addEstadio}"/>
-          <af:commandButton text="Edit" id="cb2"
-                            actionListener="#{pageFlowScope.EstadioBean.editEstadio}"
-                             disabled="#{bindings.EstadioVOIterator.currentRowIndexInRange eq '-1'}"/>
+          <af:commandButton text="Edit" id="cb2" partialSubmit="true"
+                             disabled="#{bindings.EstadioVOIterator.currentRowIndexInRange eq '-1'}"
+                            action="detalle">                
+          </af:commandButton>
           <af:commandButton text="Delete" id="cb3"
                             actionListener="#{pageFlowScope.EstadioBean.deleteEstadio}"
                             disabled="#{bindings.EstadioVOIterator.currentRowIndexInRange eq '-1'}"/>

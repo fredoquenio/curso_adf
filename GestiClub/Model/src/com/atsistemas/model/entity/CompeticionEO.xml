@@ -44,7 +44,6 @@
   </Attribute>
   <Attribute
     Name="Inicio"
-    IsNotNull="true"
     ColumnName="INICIO"
     SQLType="TIMESTAMP"
     Type="oracle.jbo.domain.Date"
@@ -56,7 +55,6 @@
   </Attribute>
   <Attribute
     Name="Fin"
-    IsNotNull="true"
     ColumnName="FIN"
     SQLType="TIMESTAMP"
     Type="oracle.jbo.domain.Date"
@@ -129,9 +127,7 @@
       <Attr Name="_checkCondition" Value='"PARTIDO" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.CompeticionEO.Partido"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="SysC004059">
@@ -140,9 +136,7 @@
       <Attr Name="_checkCondition" Value='"INICIO" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.CompeticionEO.Inicio"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="SysC004060">
@@ -151,9 +145,7 @@
       <Attr Name="_checkCondition" Value='"FIN" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.CompeticionEO.Fin"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="SysC004061">
