@@ -8,7 +8,7 @@
     <af:document title="main" id="d1">
       <af:resource type="javascript" source="/resources/js/custom.js"/>
       <af:form id="f1">
-        <af:panelSplitter orientation="horizontal" splitterPosition="250"
+        <af:panelSplitter orientation="horizontal" splitterPosition="200"
                           id="ps1">
           <f:facet name="first" >
             <af:panelGroupLayout id="menu" layout="vertical">
