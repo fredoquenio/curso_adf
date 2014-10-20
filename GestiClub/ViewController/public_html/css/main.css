@@ -1,0 +1,75 @@
+body
+{
+  background-color: White;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h2
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h3
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+
+/**************************
+*   Estilos Menú
+**************************/
+#menu {
+	width: 200px;
+	border-style: solid solid none solid;
+	border-color: #94AA74;
+	border-size: 1px;
+	border-width: 1px;
+	margin: 5px;
+        background: #CBD7B7;
+}
+	
+#menu a {
+	height: 32px;
+  	voice-family: "\"}\""; 
+  	voice-family: inherit;
+  	height: 24px;
+	text-decoration: none;
+}	
+	
+#menu a:link, #menu a:visited {
+	color: #5E7830;
+	display: block;
+	background: url("../resources/img/menu1.gif") ;
+	padding: 8px 0 0 10px;
+}
+	
+#menu a:hover {
+	color: #26370A;
+	background: url("../resources/img/menu1.gif")   0 -32px;
+	padding: 8px 0 0 10px;
+}
+	
+#menu a:active {
+	color: #26370A;
+	background: url("../resources/img/menu1.gif") 0 -64px;
+	padding: 8px 0 0 10px;
+}
+
+#menu h2{
+    text-align: center;
+    color: #5E7830;
+}

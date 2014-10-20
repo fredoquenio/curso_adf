@@ -2,7 +2,8 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <af:panelGroupLayout id="pgl1" halign="center" layout="vertical">
-    <af:spacer width="10" height="300" id="s1"/>
+     <h1 style="text-Align: center">APP GESTIÓN DE COMPETICIONES</h1>
+    <af:spacer width="10" height="250" id="s1"/>
     <af:image id="i1" shortDesc="Logo" source="/resources/img/logo.jpg"/>
   </af:panelGroupLayout>
 </jsp:root>

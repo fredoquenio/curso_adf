@@ -3,19 +3,20 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
   <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="vertical">
-    <h1>GESTIÓN DE COMPETICIONES</h1>
+    <h1 style="text-Align: center">GESTIÓN DE COMPETICIONES</h1>
     
     <!-- AF QUERY COMPETICIÓN  -->
     <af:panelGroupLayout layout="vertical" id="pgl2">
-      <af:panelHeader text="Competición" id="ph1">
+      <!--<af:panelHeader text="Competición" id="ph1">-->
         <af:query id="qryId1" headerText="Filtro" disclosed="true"
                   value="#{bindings.CriteriaCompeticionQuery.queryDescriptor}"
                   model="#{bindings.CriteriaCompeticionQuery.queryModel}"
                   queryListener="#{bindings.CriteriaCompeticionQuery.processQuery}"
                   queryOperationListener="#{bindings.CriteriaCompeticionQuery.processQueryOperation}"
-                  resultComponentId="::pc1:resId1"/>
-      </af:panelHeader>
-      <af:panelCollection id="pc1">
+                  resultComponentId="::pc1:resId1"
+                  inlineStyle="width:80%; margin-left:10%;"/>
+      <!--</af:panelHeader>-->
+      <af:panelCollection id="pc1" inlineStyle="width:80%; margin-left:10%;">
         <f:facet name="menus"/>
         <f:facet name="toolbar">
           <af:toolbar id="t1">

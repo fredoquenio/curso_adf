@@ -2,16 +2,21 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:f="http://java.sun.com/jsf/core"          
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-  <jsp:directive.page contentType="text/html;charset=UTF-8"/>  
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <link type="text/css" rel="stylesheet" href="css/main.css"/>
   <f:view>
     <af:document title="main" id="d1">
       <af:resource type="javascript" source="/resources/js/custom.js"/>
       <af:form id="f1">
-        <af:panelSplitter orientation="horizontal" splitterPosition="100"
+        <af:panelSplitter orientation="horizontal" splitterPosition="250"
                           id="ps1">
-          <f:facet name="first">
-            <af:panelGroupLayout id="pgl1" layout="vertical">
-              <af:commandButton text="Inicio" id="cb4" partialSubmit="true">
+          <f:facet name="first" >
+            <af:panelGroupLayout id="menu" layout="vertical">
+               <af:spacer width="100" height="25" id="s0"/>
+               <h2>MENÚ</h2>
+              <af:spacer height="5" id="s9"/>
+              <af:panelGroupLayout id="menu3">                
+                <af:commandLink text="INICIO" id="cb4" partialSubmit="true">
                     <af:setPropertyListener from="inicio"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
@@ -20,10 +25,9 @@
                                         type="action"/>  
                     <af:setPropertyListener from="inicio"
                                         to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>   
-              </af:commandButton>
-              <af:spacer width="100" height="10" id="s1"/>
-              <af:commandButton text="Competición" id="cb1"
+                                        type="action"/>                     
+                </af:commandLink>
+                <af:commandLink text="COMPETICIÓN" id="cb1"
                                 partialSubmit="true">
                     <af:setPropertyListener from="competicion"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
@@ -33,10 +37,9 @@
                                         type="action"/>  
                     <af:setPropertyListener from="competicion"
                                         to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>                 
-              </af:commandButton>
-              <af:spacer width="100" height="10" id="s2"/>
-              <af:commandButton text="Partidos" id="cb2" 
+                                        type="action"/>
+                </af:commandLink>
+                <af:commandLink text="PARTIDOS" id="cb2" 
                                 partialSubmit="true">
                 <af:setPropertyListener from="partidos"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
@@ -46,10 +49,9 @@
                                         type="action"/>  
                      <af:setPropertyListener from="partidos"
                                         to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>                                        
-              </af:commandButton>
-              <af:spacer width="100" height="10" id="s3"/>
-              <af:commandButton text="Estadios" id="cb3" partialSubmit="true">
+                                        type="action"/>  
+                </af:commandLink>
+                <af:commandLink text="ESTADIOS" id="cb3" partialSubmit="true">
                      <af:setPropertyListener from="estadios"
                                         to="#{pageFlowScope.DynamicRegionBean.currentTF}"
                                         type="action"/>
@@ -59,8 +61,62 @@
                      <af:setPropertyListener from="estadios"
                                         to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
                                         type="action"/>
-              </af:commandButton>
-              <af:spacer width="100" height="10" id="s4"/>
+              </af:commandLink>
+              </af:panelGroupLayout>
+             <!-- <af:commandButton text="Inicio" id="cb4" partialSubmit="true"
+                                inlineStyle="width:90%; margin-left:5%;">
+                    <af:setPropertyListener from="inicio"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                     <af:setPropertyListener from=""
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                    <af:setPropertyListener from="inicio"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>   
+              </af:commandButton>-->
+              <af:spacer width="100" height="5" id="s1"/>
+             <!-- <af:commandButton text="Competición" id="cb1"
+                                partialSubmit="true"
+                                inlineStyle="width:90%; margin-left:5%;">
+                    <af:setPropertyListener from="competicion"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                    <af:setPropertyListener from="Gestión de competiciones"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                    <af:setPropertyListener from="competicion"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>                 
+              </af:commandButton>-->
+              <af:spacer width="100" height="5" id="s2"/>
+              <!--<af:commandButton text="Partidos" id="cb2" 
+                                partialSubmit="true"
+                                inlineStyle="width:90%; margin-left:5%;">
+                <af:setPropertyListener from="partidos"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                 <af:setPropertyListener from="Gestión de partidos"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                     <af:setPropertyListener from="partidos"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>                                        
+              </af:commandButton>-->
+              <af:spacer width="100" height="5" id="s3"/>
+              <!--<af:commandButton text="Estadios" id="cb3" partialSubmit="true"
+                                inlineStyle="width:90%; margin-left:5%;">
+                     <af:setPropertyListener from="estadios"
+                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
+                                        type="action"/>
+                     <af:setPropertyListener from="Gestión de estadios"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
+                                        type="action"/>  
+                     <af:setPropertyListener from="estadios"
+                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
+                                        type="action"/>
+              </af:commandButton>-->
+              <af:spacer width="100" height="5" id="s4"/>
             </af:panelGroupLayout>
           </f:facet>
           <f:facet name="second">
