@@ -62,61 +62,7 @@
                                         to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
                                         type="action"/>
               </af:commandLink>
-              </af:panelGroupLayout>
-             <!-- <af:commandButton text="Inicio" id="cb4" partialSubmit="true"
-                                inlineStyle="width:90%; margin-left:5%;">
-                    <af:setPropertyListener from="inicio"
-                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
-                                        type="action"/>
-                     <af:setPropertyListener from=""
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
-                                        type="action"/>  
-                    <af:setPropertyListener from="inicio"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>   
-              </af:commandButton>-->
-              <af:spacer width="100" height="5" id="s1"/>
-             <!-- <af:commandButton text="Competición" id="cb1"
-                                partialSubmit="true"
-                                inlineStyle="width:90%; margin-left:5%;">
-                    <af:setPropertyListener from="competicion"
-                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
-                                        type="action"/>
-                    <af:setPropertyListener from="Gestión de competiciones"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
-                                        type="action"/>  
-                    <af:setPropertyListener from="competicion"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>                 
-              </af:commandButton>-->
-              <af:spacer width="100" height="5" id="s2"/>
-              <!--<af:commandButton text="Partidos" id="cb2" 
-                                partialSubmit="true"
-                                inlineStyle="width:90%; margin-left:5%;">
-                <af:setPropertyListener from="partidos"
-                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
-                                        type="action"/>
-                 <af:setPropertyListener from="Gestión de partidos"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
-                                        type="action"/>  
-                     <af:setPropertyListener from="partidos"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>                                        
-              </af:commandButton>-->
-              <af:spacer width="100" height="5" id="s3"/>
-              <!--<af:commandButton text="Estadios" id="cb3" partialSubmit="true"
-                                inlineStyle="width:90%; margin-left:5%;">
-                     <af:setPropertyListener from="estadios"
-                                        to="#{pageFlowScope.DynamicRegionBean.currentTF}"
-                                        type="action"/>
-                     <af:setPropertyListener from="Gestión de estadios"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1Text}"
-                                        type="action"/>  
-                     <af:setPropertyListener from="estadios"
-                                        to="#{pageFlowScope.MainBean.breadcrumbNivel1NavigationText}"
-                                        type="action"/>
-              </af:commandButton>-->
-              <af:spacer width="100" height="5" id="s4"/>
+              </af:panelGroupLayout>             
             </af:panelGroupLayout>
           </f:facet>
           <f:facet name="second">
@@ -144,8 +90,7 @@
               <af:spacer width="1" height="50" id="s8"/>
               <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"                        
                          styleClass="AFStretchWidth"/>
-            </af:panelGroupLayout>
-            <!-- id="af_twocol_left_sidebar_split_stretched"   -->
+            </af:panelGroupLayout>            
           </f:facet>
         </af:panelSplitter>
       </af:form>      
