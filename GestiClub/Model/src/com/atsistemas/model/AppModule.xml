@@ -26,9 +26,6 @@
     Name="PartidoVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
   <ViewUsage
-    Name="CountriesVO"
-    ViewObjectName="com.atsistemas.model.view.CountriesVO"/>
-  <ViewUsage
     Name="RegionsVO"
     ViewObjectName="com.atsistemas.model.view.RegionsVO"/>
   <ViewUsage
@@ -46,9 +43,6 @@
   <ViewUsage
     Name="PartidoEquipoVisitanteVO"
     ViewObjectName="com.atsistemas.model.view.PartidoVO"/>
-  <ViewUsage
-    Name="CountriesRegionVO"
-    ViewObjectName="com.atsistemas.model.view.CountriesVO"/>
   <ViewLinkUsage
     Name="JugadorEquipoFkLink1"
     ViewLinkObjectName="com.atsistemas.model.view.link.JugadorEquipoFkLink"
@@ -78,11 +72,5 @@
     ViewLinkObjectName="com.atsistemas.model.view.link.PartidoVisitanteFkLink"
     SrcViewUsageName="com.atsistemas.model.AppModule.EquipoVO"
     DstViewUsageName="com.atsistemas.model.AppModule.PartidoEquipoVisitanteVO"
-    Reversed="false"/>
-  <ViewLinkUsage
-    Name="CountrRegFkLink1"
-    ViewLinkObjectName="com.atsistemas.model.view.link.CountrRegFkLink"
-    SrcViewUsageName="com.atsistemas.model.AppModule.RegionsVO"
-    DstViewUsageName="com.atsistemas.model.AppModule.CountriesRegionVO"
     Reversed="false"/>
 </AppModule>

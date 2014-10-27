@@ -61,13 +61,6 @@
     AssociationOtherEnd="com.atsistemas.model.entity.assoc.CompeticionRegionFkAssoc.Regions"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="Countries"
-    Association="com.atsistemas.model.entity.assoc.CountrRegFkAssoc"
-    AssociationEnd="com.atsistemas.model.entity.assoc.CountrRegFkAssoc.Countries"
-    AssociationOtherEnd="com.atsistemas.model.entity.assoc.CountrRegFkAssoc.Regions"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
   <Key
     Name="RegIdPk"
     PrimaryKey="true">

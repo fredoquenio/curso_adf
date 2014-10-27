@@ -67,17 +67,14 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Pais"
-    Precision="2"
-    ColumnName="PAIS"
-    SQLType="CHAR"
-    Type="java.lang.String"
-    ColumnType="CHAR"
-    TableName="JUGADOR"
-    RetrievedOnUpdate="true"
-    RetrievedOnInsert="true">
+    Name="Region"
+    ColumnName="REGION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="JUGADOR">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -92,21 +89,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Activo"
-    IsNotNull="true"
-    Precision="1"
-    ColumnName="ACTIVO"
-    SQLType="CHAR"
-    Type="java.lang.String"
-    ColumnType="CHAR"
-    TableName="JUGADOR"
-    RetrievedOnUpdate="true"
-    RetrievedOnInsert="true">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Foto"
     Precision="100"
     ColumnName="FOTO"
@@ -118,18 +100,23 @@
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Activo"
+    IsNotNull="true"
+    ColumnName="ACTIVO"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="JUGADOR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="Equipo1"
     Association="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc"
     AssociationEnd="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc.Equipo1"
     AssociationOtherEnd="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc.Jugador"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="Countries"
-    Association="com.atsistemas.model.entity.assoc.JugadorPaisFkAssoc"
-    AssociationEnd="com.atsistemas.model.entity.assoc.JugadorPaisFkAssoc.Countries"
-    AssociationOtherEnd="com.atsistemas.model.entity.assoc.JugadorPaisFkAssoc.Jugador"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
@@ -182,9 +169,16 @@
       <Attr Name="_checkCondition" Value='"ACTIVO" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.JugadorEO.Activo"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="uk_JugadorEO">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="UK_JUGADOR_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
   </Key>
   <Key
     Name="JugadorEquipoFk">
@@ -204,8 +198,6 @@
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="JUGADOR_PAIS_FK"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.atsistemas.model.entity.JugadorEO.Pais"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </Key>
 </Entity>

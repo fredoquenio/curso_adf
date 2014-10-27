@@ -10,7 +10,7 @@
        Jugador.APELLIDOS, 
        Jugador.ID, 
        Jugador.FECHANACIMIENTO, 
-       Jugador.PAIS, 
+       Jugador.REGION, 
        Jugador.EQUIPO, 
        Jugador.ACTIVO, 
        Jugador.FOTO"
@@ -53,11 +53,11 @@
     EntityUsage="Jugador"
     AliasName="FECHANACIMIENTO"/>
   <ViewAttribute
-    Name="Pais"
+    Name="Region"
     PrecisionRule="true"
-    EntityAttrName="Pais"
+    EntityAttrName="Region"
     EntityUsage="Jugador"
-    AliasName="PAIS"/>
+    AliasName="REGION"/>
   <ViewAttribute
     Name="Equipo"
     PrecisionRule="true"

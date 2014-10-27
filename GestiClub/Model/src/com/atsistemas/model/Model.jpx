@@ -17,7 +17,11 @@
    <Containee
       Name="assoc"
       PackageName="com.atsistemas.model.entity.assoc"
-      ObjectType="JboPackage"/>
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AS" Value="true"/>
+      </DesignTime>
+   </Containee>
    <Containee
       Name="entity"
       ObjectType="JboPackage"
