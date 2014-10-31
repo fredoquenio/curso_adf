@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+ <af:panelGroupLayout layout="vertical" id="pgl1" styleClass="AFStretchWidth">
+  <h1>GESTIÓN DE JUGADORES</h1>
+  <!-- AF QUERY JUGADOR  -->
+  <af:panelGroupLayout layout="vertical" id="pgl2" styleClass="AFStretchWidth">
+   <!--<af:panelHeader text="JugadorEO" id="ph1">-->
+   <af:query id="qryId1" headerText="Search" disclosed="true"
+             value="#{bindings.JugadorVOCriteriaQuery1.queryDescriptor}"
+             model="#{bindings.JugadorVOCriteriaQuery1.queryModel}"
+             queryListener="#{bindings.JugadorVOCriteriaQuery1.processQuery}"
+             queryOperationListener="#{bindings.JugadorVOCriteriaQuery1.processQueryOperation}"
+             resultComponentId="::pc1:resId1"
+             inlineStyle="width:80%; margin-left:10%;"/>
+   <!--</af:panelHeader>-->
+   <af:panelCollection id="pc1" inlineStyle="width:80%; margin-left:10%;">
+    <f:facet name="toolbar">
+     <af:toolbar id="t1">
+      <af:commandButton text="Add" id="ctb1"
+                        actionListener="#{pageFlowScope.JugadorBean.addJugador}"/>
+      <af:commandButton text="Edit" id="ctb2"
+                        actionListener="#{pageFlowScope.JugadorBean.editJugador}"/>
+      <af:commandButton text="Delete" id="ctb3"
+                        actionListener="#{pageFlowScope.JugadorBean.deleteJugador}"/>
+     </af:toolbar>
+    </f:facet>
+    <af:table value="#{bindings.JugadorVO.collectionModel}" var="row"
+              rows="#{bindings.JugadorVO.rangeSize}"
+              emptyText="#{bindings.JugadorVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+              fetchSize="#{bindings.JugadorVO.rangeSize}" rowBandingInterval="0"
+              filterModel="#{bindings.JugadorVOCriteriaQuery1.queryDescriptor}"
+              queryListener="#{bindings.JugadorVOCriteriaQuery1.processQuery}"
+              filterVisible="true" varStatus="vs"
+              selectedRowKeys="#{bindings.JugadorVO.collectionModel.selectedRow}"
+              selectionListener="#{bindings.JugadorVO.collectionModel.makeCurrent}"
+              rowSelection="single" id="resId1"
+              partialTriggers=":::d1 :::popupDelete:idDialogAvisoborrado">
+     <af:column sortProperty="#{bindings.JugadorVO.hints.Nombre.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.Nombre.label}"
+                id="resId1c1">
+      <af:outputText value="#{row.Nombre}" id="ot2"/>
+     </af:column>
+     <af:column sortProperty="#{bindings.JugadorVO.hints.Apellidos.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.Apellidos.label}"
+                id="resId1c2">
+      <af:outputText value="#{row.Apellidos}" id="ot4"/>
+     </af:column>
+     <af:column sortProperty="#{bindings.JugadorVO.hints.Fechanacimiento.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.Fechanacimiento.label}"
+                id="resId1c3">
+      <f:facet name="filter">
+       <af:inputDate value="#{vs.filterCriteria.Fechanacimiento}" id="id1"/>
+      </f:facet>
+      <af:outputText value="#{row.Fechanacimiento}" id="ot7">
+       <af:convertDateTime pattern="#{bindings.JugadorVO.hints.Fechanacimiento.format}"/>
+      </af:outputText>
+     </af:column>
+     <af:column sortProperty="#{bindings.JugadorVO.hints.RegionName.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.RegionName.label}"
+                id="resId1c4">
+      <af:outputText value="#{row.RegionName}" id="ot3"/>
+     </af:column>
+     <af:column sortProperty="#{bindings.JugadorVO.hints.NombreEquipo.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.NombreEquipo.label}"
+                id="resId1c5">
+      <af:outputText value="#{row.NombreEquipo}" id="ot6"/>
+     </af:column>
+     <af:column sortProperty="#{bindings.JugadorVO.hints.Activo.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.Activo.label}"
+                id="resId1c6">
+      <af:outputText value="#{row.Activo}" id="ot5"/>
+     </af:column>     
+     <af:column sortProperty="#{bindings.JugadorVO.hints.Foto.name}"
+                filterable="true" sortable="true"
+                headerText="#{bindings.JugadorVO.hints.Foto.label}"
+                id="resId1c7">
+      <!--<af:outputText value="#{row.Foto}" id="ot1"/>-->
+      <af:image id="img2" 
+                source="/downloadimage?image=#{row.Foto}&amp;#{pageFlowScope.JugadorBean.time}"                 
+                 inlineStyle="width:100px; height:100px;"/>
+     </af:column>
+    </af:table>
+   </af:panelCollection>
+  </af:panelGroupLayout>
+  <!-- POPUP EDICIÓN JUGADOR -->
+  <af:popup id="p1" binding="#{pageFlowScope.JugadorBean.popupEditJugador}"
+            popupCanceledListener="#{pageFlowScope.JugadorBean.cancelEditJugador}">
+   <af:dialog id="d1" title="Edición de Jugador"
+              dialogListener="#{pageFlowScope.JugadorBean.commitJugador}">
+    <af:panelFormLayout id="pfl1">
+     <af:panelGroupLayout id="pgl0" layout="horizontal">
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+       <af:inputText value="#{bindings.Nombre.inputValue}"
+                     label="#{bindings.Nombre.hints.label}"
+                     required="#{bindings.Nombre.hints.mandatory}"
+                     columns="#{bindings.Nombre.hints.displayWidth}"
+                     maximumLength="#{bindings.Nombre.hints.precision}"
+                     shortDesc="#{bindings.Nombre.hints.tooltip}" id="it5">
+        <f:validator binding="#{bindings.Nombre.validator}"/>
+       </af:inputText>
+       <af:inputText value="#{bindings.Apellidos.inputValue}"
+                     label="#{bindings.Apellidos.hints.label}"
+                     required="#{bindings.Apellidos.hints.mandatory}"
+                     columns="#{bindings.Apellidos.hints.displayWidth}"
+                     maximumLength="#{bindings.Apellidos.hints.precision}"
+                     shortDesc="#{bindings.Apellidos.hints.tooltip}" id="it1">
+        <f:validator binding="#{bindings.Apellidos.validator}"/>
+       </af:inputText>
+       <af:inputDate value="#{bindings.Fechanacimiento.inputValue}"
+                     label="#{bindings.Fechanacimiento.hints.label}"
+                     required="#{bindings.Fechanacimiento.hints.mandatory}"
+                     shortDesc="#{bindings.Fechanacimiento.hints.tooltip}"
+                     id="id2">
+        <f:validator binding="#{bindings.Fechanacimiento.validator}"/>
+        <af:convertDateTime pattern="#{bindings.Fechanacimiento.format}"/>
+       </af:inputDate>
+       <af:selectOneChoice value="#{bindings.Region.inputValue}"
+                           label="#{bindings.Region.label}"
+                           required="#{bindings.Region.hints.mandatory}"
+                           shortDesc="#{bindings.Region.hints.tooltip}"
+                           id="soc1">
+        <f:selectItems value="#{bindings.Region.items}" id="si2"/>
+       </af:selectOneChoice>
+       <af:selectOneChoice value="#{bindings.Equipo.inputValue}"
+                           label="#{bindings.Equipo.label}"
+                           required="#{bindings.Equipo.hints.mandatory}"
+                           shortDesc="#{bindings.Equipo.hints.tooltip}"
+                           id="soc2">
+        <f:selectItems value="#{bindings.Equipo.items}" id="si1"/>
+       </af:selectOneChoice>
+       <af:selectBooleanCheckbox label="#{bindings.Activo.hints.label}"
+                                 required="#{bindings.Activo.hints.mandatory}"
+                                 id="sbc1"
+                                 value="#{bindings.Activo.inputValue}"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl4" layout="vertical"
+                           inlineStyle="text-align:center">
+       <af:image source="/downloadimage?image=#{bindings.Foto.inputValue}&amp;#{pageFlowScope.JugadorBean.time}"
+                 id="i1" binding="#{pageFlowScope.JugadorBean.imagePreview}"
+                 inlineStyle="width:200px; height:200px;"
+                 partialTriggers="if1"/>
+       <af:spacer width="2" height="2" id="spacer6"/>
+       <af:inputFile id="if1" label="#{bindings.Foto.hints.label}"
+                     value="#{pageFlowScope.JugadorBean.foto}"
+                     valueChangeListener="#{pageFlowScope.JugadorBean.changeImageHandled}"
+                     autoSubmit="true"/>
+      </af:panelGroupLayout>
+     </af:panelGroupLayout>
+    </af:panelFormLayout>
+   </af:dialog>
+  </af:popup>
+  
+   <!-- Se incluye popup de confirmación de borrado -->
+    <f:subview id="popupDelete">
+      <jsp:include page="/WEB-INF/fragments/popupConfirmacionBorrado.jsff"/>
+    </f:subview>
+ </af:panelGroupLayout>
+</jsp:root>

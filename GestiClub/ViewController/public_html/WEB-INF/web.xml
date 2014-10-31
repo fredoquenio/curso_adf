@@ -16,6 +16,12 @@
     <param-name>oracle.adf.view.rich.versionString.HIDDEN</param-name>
     <param-value>true</param-value>
   </context-param>
+  <context-param>
+    <!-- directory to store temporary files -->
+    <param-name>org.apache.myfaces.trinidad.UPLOAD_TEMP_DIR</param-name>
+    <!-- Use a TrinidadUploads subdirectory of /tmp -->
+    <param-value>/tmp/TrinidadUploads/</param-value>
+  </context-param>
   <filter>
     <filter-name>JpsFilter</filter-name>
     <filter-class>oracle.security.jps.ee.http.JpsFilter</filter-class>
@@ -32,6 +38,12 @@
     <filter-name>adfBindings</filter-name>
     <filter-class>oracle.adf.model.servlet.ADFBindingFilter</filter-class>
   </filter>
+  <!-- Filtro Subida de ficheros -->
+  <filter>
+    <filter-name>adfFaces</filter-name>
+    <filter-class>oracle.adf.view.faces.webapp.AdfFacesFilter</filter-class>
+  </filter>
+  
   <filter-mapping>
     <filter-name>JpsFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -51,6 +63,13 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  
+  <!-- Filter Mapping para la subida de ficheros -->
+  <filter-mapping>
+    <filter-name>adfFaces</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+  
   <listener>
     <listener-class>oracle.adf.mbean.share.connection.ADFConnectionLifeCycleCallBack</listener-class>
   </listener>
@@ -60,7 +79,7 @@
   <listener>
     <listener-class>oracle.bc4j.mbean.BC4JConfigLifeCycleCallBack</listener-class>
   </listener>
-  <servlet>
+   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
@@ -84,6 +103,10 @@
   <servlet>
     <servlet-name>GatewayServlet</servlet-name>
     <servlet-class>oracle.adfinternal.view.faces.bi.renderkit.graph.FlashBridgeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DownloadImage</servlet-name>
+    <servlet-class>com.atsistemas.servlet.DownloadImage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
@@ -116,6 +139,10 @@
   <servlet-mapping>
     <servlet-name>GatewayServlet</servlet-name>
     <url-pattern>/flashbridge/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadImage</servlet-name>
+    <url-pattern>/downloadimage</url-pattern>
   </servlet-mapping>
   <mime-mapping>
     <extension>swf</extension>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="jugadorPageDef" Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JugadorVO" RangeSize="25"
+              DataControl="AppModuleDataControl" id="JugadorVOIterator"/>
+    <searchRegion Binds="JugadorVOIterator" Criteria="JugadorVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="JugadorVOQuery"/>
+    <searchRegion Criteria="JugadorVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="JugadorVOIterator" id="JugadorVOCriteriaQuery"/>
+    <searchRegion Criteria="JugadorVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="JugadorVOIterator" id="JugadorVOCriteriaQuery1"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JugadorVOIterator" id="JugadorVO">
+      <nodeDefinition DefName="com.atsistemas.model.view.JugadorVO"
+                      Name="JugadorVO10">
+        <AttrNames>
+          <Item Value="Nombre"/>
+          <Item Value="Apellidos"/>
+          <Item Value="Fechanacimiento"/>
+          <Item Value="RegionName"/>
+          <Item Value="NombreEquipo"/>
+          <Item Value="Activo"/>
+          <Item Value="Foto"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="JugadorVOIterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JugadorVOIterator" id="Apellidos">
+      <AttrNames>
+        <Item Value="Apellidos"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JugadorVOIterator" id="Fechanacimiento">
+      <AttrNames>
+        <Item Value="Fechanacimiento"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="JugadorVOIterator" StaticList="false" Uses="LOV_Region"
+          id="Region" DTSupportsMRU="false"/>
+    <list IterBinding="JugadorVOIterator" StaticList="false" Uses="LOV_Equipo"
+          id="Equipo" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="JugadorVOIterator" id="NombreEquipo">
+      <AttrNames>
+        <Item Value="NombreEquipo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JugadorVOIterator" id="RegionName">
+      <AttrNames>
+        <Item Value="RegionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JugadorVOIterator" id="Foto">
+      <AttrNames>
+        <Item Value="Foto"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="JugadorVOIterator" id="Create"
+            InstanceName="AppModuleDataControl.JugadorVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createRow"/>
+    <action IterBinding="JugadorVOIterator" id="Delete"
+            InstanceName="AppModuleDataControl.JugadorVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="JugadorVOIterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.JugadorVO"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <button IterBinding="JugadorVOIterator" StaticList="true" id="Activo">
+      <AttrNames>
+        <Item Value="Activo"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="JugadorVOIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

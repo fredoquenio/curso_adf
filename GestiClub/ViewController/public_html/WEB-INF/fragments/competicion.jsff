@@ -20,13 +20,13 @@
         <f:facet name="menus"/>
         <f:facet name="toolbar">
           <af:toolbar id="t1">
-            <af:commandToolbarButton text="Add" id="ctb1"
+            <af:commandButton text="Add" id="ctb1"
                                      actionListener="#{pageFlowScope.CompeticionBean.addCompeticion}"/>
-            <af:commandToolbarButton text="Edit" id="ctb2"
+            <af:commandButton text="Edit" id="ctb2"
                                      actionListener="#{pageFlowScope.CompeticionBean.editCompeticion}"
                                      disabled="#{bindings.CompeticionVO.currentRowIndex eq -1}"
                                      partialTriggers="::qryId1 resId1"/>
-            <af:commandToolbarButton text="Delete" id="ctb3"
+            <af:commandButton text="Delete" id="ctb3"
                                      actionListener="#{pageFlowScope.CompeticionBean.deleteCompeticion}"
                                      disabled="#{bindings.CompeticionVO.currentRowIndex eq -1}"
                                      partialTriggers="::qryId1 resId1"/>

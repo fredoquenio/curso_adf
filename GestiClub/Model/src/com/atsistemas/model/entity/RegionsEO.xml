@@ -61,6 +61,13 @@
     AssociationOtherEnd="com.atsistemas.model.entity.assoc.CompeticionRegionFkAssoc.Regions"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="JugadorEO"
+    Association="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc.JugadorEO"
+    AssociationOtherEnd="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc.RegionsEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="RegIdPk"
     PrimaryKey="true">
@@ -77,6 +84,17 @@
       <Attr Name="_DBObjectName" Value="REGION_ID_NN"/>
       <Attr Name="_checkCondition" Value='"REGION_ID" IS NOT NULL'/>
       <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.atsistemas.model.entity.RegionsEO.RegionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_RegionsEO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="UK_JUGADOR_EO1"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_REGIONS_EO"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.atsistemas.model.entity.RegionsEO.RegionId"/>

@@ -7,6 +7,7 @@ public class DynamicRegionBean {
     private String taskFlowCompeticionId = "/WEB-INF/pageFlows/task-flow-competicion.xml#task-flow-competicion";
     private String taskFlowPartidosId = "/WEB-INF/pageFlows/task-flow-partidos.xml#task-flow-partidos";
     private String taskFlowEstadiosId = "/WEB-INF/pageFlows/task-flow-estadios.xml#task-flow-estadios";
+    private String taskFlowJugadorId = "/WEB-INF/pageFlows/task-flow-jugador.xml#task-flow-jugador";
     
     private String currentTF = "bienvenida";
    
@@ -24,6 +25,8 @@ public class DynamicRegionBean {
             returnTF = taskFlowPartidosId;
         } else if ("estadios".equals(currentTF)) {
             returnTF = taskFlowEstadiosId;
+        } else if ("jugador".equals(currentTF)) {
+            returnTF = taskFlowJugadorId;
         } else {
             returnTF = taskFlowBienvenidaId;
         }

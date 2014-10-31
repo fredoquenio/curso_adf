@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-jugador">
+    <default-activity id="__1">jugador</default-activity>
+    <managed-bean id="__4">
+      <managed-bean-name id="__5">JugadorBean</managed-bean-name>
+      <managed-bean-class id="__3">com.atsistemas.beans.JugadorBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+      <managed-property id="__12">
+        <property-name id="__11">popupConfirmDelete</property-name>
+        <property-class>com.atsistemas.beans.PopupConfirmDeleteBean</property-class>
+        <value id="__10">#{pageFlowScope.PopupConfirmDeleteBean}</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__9">
+      <managed-bean-name id="__6">PopupConfirmDeleteBean</managed-bean-name>
+      <managed-bean-class id="__7">com.atsistemas.beans.PopupConfirmDeleteBean</managed-bean-class>
+      <managed-bean-scope id="__8">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="jugador">
+      <page>/WEB-INF/fragments/jugador.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

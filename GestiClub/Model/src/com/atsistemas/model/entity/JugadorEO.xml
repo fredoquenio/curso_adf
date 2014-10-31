@@ -83,7 +83,8 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="JUGADOR">
+    TableName="JUGADOR"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="22"/>
     </DesignTime>
@@ -105,8 +106,8 @@
     IsNotNull="true"
     ColumnName="ACTIVO"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
     TableName="JUGADOR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
@@ -119,6 +120,25 @@
     AssociationOtherEnd="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc.Jugador"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="RegionsEO"
+    Association="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc.RegionsEO"
+    AssociationOtherEnd="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc.JugadorEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="JugadorEquipoCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="JUGADOR_EQUIPO_CHECK"/>
+      <Attr Name="_checkCondition" Value='"EQUIPO" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.atsistemas.model.entity.JugadorEO.Equipo"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="JugadorPk"
     PrimaryKey="true">
@@ -181,6 +201,17 @@
     <AttrArray Name="Attributes"/>
   </Key>
   <Key
+    Name="uk_JugadorEO1">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="UK_JUGADOR_EO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.atsistemas.model.entity.JugadorEO.Region"/>
+    </AttrArray>
+  </Key>
+  <Key
     Name="JugadorEquipoFk">
     <DesignTime>
       <Attr Name="_referencedKey" Value="EQUIPO_PK"/>
@@ -190,14 +221,5 @@
     <AttrArray Name="Attributes">
       <Item Value="com.atsistemas.model.entity.JugadorEO.Equipo"/>
     </AttrArray>
-  </Key>
-  <Key
-    Name="JugadorPaisFk">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="COUNTRY_C_ID_PK"/>
-      <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="JUGADOR_PAIS_FK"/>
-    </DesignTime>
-    <AttrArray Name="Attributes"/>
   </Key>
 </Entity>

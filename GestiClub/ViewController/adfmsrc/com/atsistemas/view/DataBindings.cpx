@@ -17,6 +17,8 @@
           usageId="com_atsistemas_view_competicionPageDef"/>
     <page path="/WEB-INF/fragments/detalleEstadio.jsff"
           usageId="com_atsistemas_view_detalleEstadioPageDef"/>
+    <page path="/WEB-INF/fragments/jugador.jsff"
+          usageId="com_atsistemas_view_jugadorPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_atsistemas_view_indexPageDef"
@@ -29,9 +31,25 @@
           path="fragments.competicionPageDef"/>
     <page id="com_atsistemas_view_detalleEstadioPageDef"
           path="fragments.detalleEstadioPageDef"/>
+    <page id="com_atsistemas_view_jugadorPageDef"
+          path="fragments.jugadorPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="com.atsistemas.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="AppModuleDataControl1" Package="atsistemas.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="AppModuleDataControl11" Package="atsistemas.model"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
                      SupportsTransactions="true" SupportsFindMode="true"
                      SupportsRangesize="true" SupportsResetState="true"

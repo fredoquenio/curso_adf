@@ -6,39 +6,140 @@
   Name="JugadorVO"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  SelectList="Jugador.NOMBRE, 
+   SelectList="Jugador.NOMBRE, 
        Jugador.APELLIDOS, 
        Jugador.ID, 
        Jugador.FECHANACIMIENTO, 
        Jugador.REGION, 
        Jugador.EQUIPO, 
        Jugador.ACTIVO, 
-       Jugador.FOTO"
-  FromList="JUGADOR Jugador"
+       Jugador.FOTO, 
+       EquipoJugador.NOMBRE AS NOMBRE1, 
+       EquipoJugador.ID AS ID1, 
+       RegionsJugador.REGION_NAME, 
+       RegionsJugador.REGION_ID"
+   FromList="JUGADOR Jugador, EQUIPO EquipoJugador, REGIONS RegionsJugador"
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+   Where="(Jugador.EQUIPO = EquipoJugador.ID) AND (Jugador.REGION = RegionsJugador.REGION_ID)">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
   </DesignTime>
+  <ViewAccessor
+    Name="RegionsVO"
+    ViewObjectName="com.atsistemas.model.view.RegionsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EquipoVO"
+    ViewObjectName="com.atsistemas.model.view.EquipoVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Region"
+    ListVOName="RegionsVO"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Region"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RegionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RegionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Equipo"
+    ListVOName="EquipoVO"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Equipo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Nombre"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="Jugador"
     Entity="com.atsistemas.model.entity.JugadorEO"/>
-  <ViewAttribute
+  <EntityUsage
+     Name="EquipoJugador"
+    Entity="com.atsistemas.model.entity.EquipoEO"
+    Association="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc"
+    AssociationEnd="com.atsistemas.model.entity.assoc.JugadorEquipoFkAssoc.Equipo1"
+    SourceUsage="com.atsistemas.model.view.JugadorVO.Jugador"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.atsistemas.model.entity.JugadorEO.Equipo"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.atsistemas.model.entity.EquipoEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+   <EntityUsage
+      Name="RegionsJugador"
+      Entity="com.atsistemas.model.entity.RegionsEO"
+      Association="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc"
+      AssociationEnd="com.atsistemas.model.entity.assoc.JugadorRegionFKAssoc.RegionsEO"
+      SourceUsage="com.atsistemas.model.view.JugadorVO.Jugador"
+      ReadOnly="true"
+      Reference="true"
+      DeleteParticipant="false"
+      JoinType="INNER JOIN">
+      <DesignTime>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="com.atsistemas.model.entity.JugadorEO.Region"/>
+         </AttrArray>
+         <AttrArray Name="_dstAttributes">
+            <Item Value="com.atsistemas.model.entity.RegionsEO.RegionId"/>
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
     Name="Nombre"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Nombre"
     EntityUsage="Jugador"
-    AliasName="NOMBRE"/>
+    AliasName="NOMBRE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="100"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Apellidos"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Apellidos"
     EntityUsage="Jugador"
-    AliasName="APELLIDOS"/>
+    AliasName="APELLIDOS">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="100"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Id"
     IsNotNull="true"
@@ -57,13 +158,29 @@
     PrecisionRule="true"
     EntityAttrName="Region"
     EntityUsage="Jugador"
-    AliasName="REGION"/>
+    AliasName="REGION"
+    LOVName="LOV_Region">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Equipo"
     PrecisionRule="true"
     EntityAttrName="Equipo"
     EntityUsage="Jugador"
-    AliasName="EQUIPO"/>
+    AliasName="EQUIPO"
+    LOVName="LOV_Equipo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Activo"
     IsNotNull="true"
@@ -77,4 +194,80 @@
     EntityAttrName="Foto"
     EntityUsage="Jugador"
     AliasName="FOTO"/>
+   <ViewAttribute
+      Name="NombreEquipo"
+      IsNotNull="true"
+      PrecisionRule="true"
+      EntityAttrName="Nombre"
+      EntityUsage="EquipoJugador"
+      AliasName="NOMBRE1"/>
+   <ViewAttribute
+      Name="IdEquipo"
+      IsNotNull="true"
+      PrecisionRule="true"
+      EntityAttrName="Id"
+      EntityUsage="EquipoJugador"
+      AliasName="ID1"/>
+   <ViewAttribute
+      Name="RegionName"
+      PrecisionRule="true"
+      EntityAttrName="RegionName"
+      EntityUsage="RegionsJugador"
+      AliasName="REGION_NAME"/>
+   <ViewAttribute
+      Name="RegionId"
+      IsNotNull="true"
+      PrecisionRule="true"
+      EntityAttrName="RegionId"
+      EntityUsage="RegionsJugador"
+      AliasName="REGION_ID"/>
+   <ViewCriteria
+      Name="JugadorVOCriteria"
+      ViewObjectName="com.atsistemas.model.view.JugadorVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow5"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="Nombre"
+            ViewAttribute="Nombre"
+            Operator="CONTAINS"
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="Apellidos"
+            ViewAttribute="Apellidos"
+            Operator="CONTAINS"
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="Equipo"
+            ViewAttribute="Equipo"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="Id"/>
+   </AttrArray>
 </ViewObject>
